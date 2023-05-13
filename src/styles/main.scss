@@ -1,5 +1,4 @@
-$primary-color: #c1b1b1;
-
-body {
-  background-color: $primary-color;
-}
+// 整個專案的入口樣式檔案
+@import'./normalize.scss';
+@import'./variable.scss';
+@import'./layout.scss';
