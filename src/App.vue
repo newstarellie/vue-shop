@@ -1,6 +1,15 @@
 <template>
-  <Navbar></Navbar>
-  <router-view></router-view>
+  <div id="app">
+    <Navbar class="navbar"></Navbar>
+
+    <main>
+      <router-view></router-view>
+    </main>
+
+    <footer>
+      <p>&copy; 2023 My E-commerce Website. All rights reserved.</p>
+    </footer>
+  </div>
 </template>
 
 <script>
@@ -19,7 +28,14 @@ export default {
 
 <style lang="scss">
 #app {
-  margin-top: 60px;
   background-color: $primary-color;
+}
+
+.navbar {
+  // background-color: red;
+
+  ul {
+    // padding: 50px;
+  }
 }
 </style>
