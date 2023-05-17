@@ -12,7 +12,8 @@
     "vue": "^3.2.13",
     "vue-router": "^4.2.0",
     "sass": "^1.62.1",
-    "sass-loader": "^13.2.2"
+    "sass-loader": "^13.2.2",
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
