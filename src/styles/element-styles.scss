@@ -1,0 +1,75 @@
+// 全局樣式
+body {
+  font-family: $font-family;
+  color: $secondary-color;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $primary-color;
+}
+
+/* 全域CSS設定 */
+body {
+  font-family: Arial, sans-serif;
+  background-color: $bg-color;
+  margin: 0;
+  padding: 0;
+}
+
+/* 標題樣式 */
+h1 {
+  font-size: 2em;
+  text-align: center;
+  margin-top: 0.5em;
+  color: $main-color;
+}
+
+/* 表單樣式 */
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2em auto;
+  max-width: 300px;
+  background-color: #fff;
+  padding: 1em;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 標籤樣式 */
+label {
+  font-size: 1.2em;
+  margin-bottom: 0.5em;
+  color: $main-color;
+}
+
+/* 輸入欄位樣式 */
+input {
+  font-size: 1.2em;
+  padding: 0.5em;
+  border-radius: 5px;
+  border: none;
+  background-color: $bg-color;
+  margin-bottom: 1em;
+  color: $text-color;
+  text-align: center;
+}
+
+/* 按鈕樣式 */
+button {
+  background-color: $main-color;
+  color: #fff;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2em;
+  cursor: pointer;
+  margin-top: 1em;
+}
