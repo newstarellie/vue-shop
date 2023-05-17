@@ -1,20 +1,21 @@
 <template>
   {{ tryValue }}
   <img alt="Vue logo" src="./assets/logo.png">
-  <router-link to="/home">Home</router-link>
+  <Navbar></Navbar>
   <router-view></router-view>
-  <HelloWorld msg="Welcome to Your Vue.js App" />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from './components/HelloWorld.vue'
+import Navbar from './components/Navbar.vue'
 import { mapState } from 'vuex';
 
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    // HelloWorld,
+    Navbar
   },
   computed: {
     ...mapState(['tryValue']),
