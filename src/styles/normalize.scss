@@ -1,0 +1,537 @@
+// =============================================================================
+// Normalize.scss based on Nicolas Gallagher and Jonathan Neal's
+// normalize.css v2.1.3 | MIT License | git.io/normalize
+// =============================================================================
+
+// =============================================================================
+// Normalize.scss settings
+// =============================================================================
+
+// 如果要支援 IE6 和 IE7，將此設定為 true
+// 注意：設為 true 可能會使某些元素的呈現與設為 false 時略有不同
+$legacy_support_for_ie: false !default; // 在 Compass 中也使用
+
+// 在這裡設定預設字型系列，以免之後需要覆寫
+$normalized_font_family: sans-serif !default;
+
+$normalize_headings: true !default;
+
+$h1_font_size: 2em !default;
+$h2_font_size: 1.5em !default;
+$h3_font_size: 1.17em !default;
+$h4_font_size: 1em !default;
+$h5_font_size: 0.83em !default;
+$h6_font_size: 0.75em !default;
+
+$h1_margin: 0.67em 0 !default;
+$h2_margin: 0.83em 0 !default;
+$h3_margin: 1em 0 !default;
+$h4_margin: 1.33em 0 !default;
+$h5_margin: 1.67em 0 !default;
+$h6_margin: 2.33em 0 !default;
+
+$background: #fff !default;
+$color: #000 !default;
+
+// =============================================================================
+// HTML5 display definitions
+// =============================================================================
+
+// 修正 IE6/7/8/9 和 FF3 中未定義的區塊顯示屬性
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section,
+summary {
+  display: block;
+}
+
+// 修正 IE6/7/8/9 和 FF3 中未定義的行內區塊顯示屬性
+
+audio,
+canvas,
+video {
+  display: inline-block;
+
+  @if $legacy_support_for_ie {
+    *display: inline;
+    *zoom: 1;
+  }
+}
+
+// 1. 避免現代瀏覽器顯示沒有控制項的 'audio' 標籤
+// 2. 移除 iOS5 裝置上的多餘高度
+
+audio:not([controls]) {
+  display: none; // 1
+  height: 0; // 2
+}
+
+//
+// 修正 IE8/9 中未定義的 '[hidden]' 樣式
+// 隱藏 IE、Safari 和 Firefox < 22 中的 'template' 標籤
+//
+
+[hidden],
+template {
+  display: none;
+}
+
+// =============================================================================
+// Base
+// =============================================================================
+
+// 1. 修正 IE6/7 中當 body 字型大小使用 em 單位時的文字調整問題
+// http://clagnut.com/blog/348/#c790
+// 2. 在 iOS 裝置上避免方向變更後文字大小調整，同時保留使用者縮放功能
+// www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/
+
+html {
+
+  // 1
+  @if $legacy_support_for_ie {
+    font-size: 100%; // 修正 IE6/7 中的文字調整問題
+  }
+
+  background: $background;
+  color: $color;
+  -webkit-text-size-adjust: 100%; // 2
+  -ms-text-size-adjust: 100%; // 2
+}
+
+// 修正 'textarea' 和其他表單元素之間的字型系列不一致問題
+
+html,
+button,
+input,
+select,
+textarea {
+  font-family: $normalized_font_family;
+}
+
+// 修正 IE6/7 中處理邊距的錯誤
+
+body {
+  margin: 0;
+}
+
+// =============================================================================
+// 連結
+// =============================================================================
+
+// 1. 移除 IE10 中活動連結的灰色背景色
+// 2. 修正 Chrome 中的外框顯示問題
+// 3. 改善所有瀏覽器中焦點狀態和滑鼠懸停狀態的可讀性
+// people.opera.com/patrickl/experiments/keyboard/test
+
+a {
+  // 1
+  background: transparent;
+
+  // 2
+  &:focus {
+    outline: thin dotted;
+  }
+
+  // 3
+  &:hover,
+  &:active {
+    outline: 0;
+  }
+}
+
+// =============================================================================
+// 排版
+// =============================================================================
+
+// 修正 IE6/7 中的字型大小和邊距問題
+// 修正 FF4+、Chrome、S5 中 'section' 和 'article' 中的字型大小
+
+@if $normalize_headings ==true {
+  h1 {
+    font-size: $h1_font_size;
+    margin: $h1_margin;
+  }
+
+  h2 {
+    font-size: $h2_font_size;
+    margin: $h2_margin;
+  }
+
+  h3 {
+    font-size: $h3_font_size;
+    margin: $h3_margin;
+  }
+
+  h4 {
+    font-size: $h4_font_size;
+    margin: $h4_margin;
+  }
+
+  h5 {
+    font-size: $h5_font_size;
+    margin: $h5_margin;
+  }
+
+  h6 {
+    font-size: $h6_font_size;
+    margin: $h6_margin;
+  }
+}
+
+// 修正 IE 8/9、S5、Chrome 中的 'abbr' 標籤樣式
+
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+// 修正 FF3+、S4/5、Chrome 中的 'b' 和 'strong' 標籤樣式
+
+b,
+strong {
+  font-weight: bold;
+}
+
+@if $legacy_support_for_ie {
+  blockquote {
+    margin: 1em 40px;
+  }
+}
+
+// 修正 S5、Chrome 中的 'dfn' 標籤樣式
+
+dfn {
+  font-style: italic;
+}
+
+// 修正 IE6/7/8/9 中的 'mark' 標籤樣式
+
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+@if $legacy_support_for_ie {
+
+  p,
+  pre {
+    margin: 1em 0;
+  }
+}
+
+// 修正 IE6 中的 'code' 、'kbd' 、'pre' 和 'samp' 標籤樣式 // 修正 IE6/7 中的 'code'、'kbd'、'pre'、'samp' 標籤樣式的字型系列和字型大小
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, serif;
+
+  @if $legacy_support_for_ie {
+    _font-family: 'courier new', monospace;
+  }
+
+  font-size: 1em;
+}
+
+// 改善所有瀏覽器中預格式化文本的可讀性
+
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+// 設定一致的引用樣式
+
+q {
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+// 1. 修正 IE6/7 中不支援 CSS 引號
+// 2. 修正 S4 中不支援引用樣式
+
+// 1
+@if $legacy_support_for_ie {
+  q {
+    quotes: none;
+  }
+}
+
+// 2
+q {
+
+  &:before,
+  &:after {
+    content: '';
+    content: none;
+  }
+}
+
+// 修正所有瀏覽器中字體大小的一致性和變數性
+
+small {
+  font-size: 80%;
+}
+
+// 避免 sub 和 sup 影響行高在所有瀏覽器中
+// gist.github.com/413930
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+// =============================================================================
+// 列表
+// =============================================================================
+
+// 修正 IE6/7 中的邊距問題
+
+@if $legacy_support_for_ie {
+
+  dl,
+  menu,
+  ol,
+  ul {
+    margin: 1em 0;
+  }
+}
+
+@if $legacy_support_for_ie {
+  dd {
+    margin: 0 0 0 40px;
+  }
+}
+
+// 修正 IE6/7 中的填充問題
+
+@if $legacy_support_for_ie {
+
+  menu,
+  ol,
+  ul {
+    padding: 0 0 0 40px;
+  }
+}
+
+// 修正 IE7 中列表圖像的顯示問題
+
+nav {
+
+  ul,
+  ol {
+    @if $legacy_support_for_ie {
+      list-style-image: none;
+    }
+  }
+}
+
+// =============================================================================
+// 嵌入內容
+// =============================================================================
+
+// 1. 移除 'a' 元素內部的邊框在 IE6/7/8/9 和 FF3 中的顯示
+// 2. 改善 IE7 中縮放圖片的品質
+// code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/
+
+img {
+  border: 0; // 1
+
+  @if $legacy_support_for_ie {
+    -ms-interpolation-mode: bicubic; // 2
+  }
+}
+
+// 修正 IE9 中的溢出顯示問題
+svg:not(:root) {
+  overflow: hidden;
+}
+
+// =============================================================================
+// 圖片
+// =============================================================================
+
+// 修正 IE6/7/8/9、S5、O11 中的邊距問題
+
+figure {
+  margin: 0;
+}
+
+// =============================================================================
+// 表單
+// =============================================================================
+
+// 修正 IE6/7 中的邊距問題
+
+@if $legacy_support_for_ie {
+  form {
+    margin: 0;
+  }
+}
+
+// 定義一致的邊框、邊距和填充
+
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+// 1. 修正 IE6/7/8/9 中不繼承的顏色
+// 2. 移除填充以避免如果將 fieldset 的邊框設為零時產生問題
+// 3. 修正 FF3 中的文字不換行
+// 4. 修正 IE6/7 中的對齊問題
+
+legend {
+  border: 0; // 1
+  padding: 0; // 2
+  white-space: normal; // 3
+
+  @if $legacy_support_for_ie {
+    *margin-left: -7px; // 4
+  }
+}
+
+// 1. 修正所有瀏覽器中不繼承的字體系列
+// 2. 修正所有瀏覽器中不繼承的字體大小
+// 3. 修正 IE6/7、FF3+、S5、Chrome 中的邊距問題
+// 4. 改善所有瀏覽器中外觀和一致性
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit; // 1
+  font-size: 100%; // 2
+  margin: 0; // 3
+  vertical-align: baseline; // 4
+
+  @if $legacy_support_for_ie {
+    *vertical-align: middle; // 4
+  }
+}
+
+// 修正 FF3/4 中使用 !important 設定 'input' 的行高問題
+
+button,
+input {
+  line-height: normal;
+}
+
+// 修正 'button' 和 'select' 中 'text-transform' 不一致的問題
+// 所有其他表單元素不繼承 'text-transform' 值
+// 修正 Chrome、Safari 5+ 和 IE 8+ 中 'button' 的樣式繼承問題
+// 修正 Firefox 4+ 和 Opera 中 'select' 的樣式繼承問題
+
+button,
+select {
+  text-transform: none;
+}
+
+// 1. 避免 Android 4.0.* 中的 WebKit 錯誤，該錯誤導致 (2) 破壞原生 'audio' 和 'video' 控制項
+// 2. 修正 iOS 中無法為可點擊的 'input'類型設定樣式的問題 // 3. 改善圖片類型的 'input' 和其他類型的 'input' 之間的游標樣式的可用性和一致性
+// 4. 在不影響正常文本輸入的情況下，移除 IE7 中的內部間距
+// 已知問題：IE6 中仍保留內部間距
+
+button,
+html input[type="button"],
+// 1
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button; // 廠商前綴屬性
+  appearance: button; // 標準屬性
+  cursor: pointer; // 游標樣式
+
+  @if $legacy_support_for_ie {
+    *overflow: visible; // IE支援
+  }
+}
+
+// 重新設置禁用元素的預設游標
+
+button[disabled],
+input[disabled] {
+  cursor: default;
+}
+
+// 移除 FF3+ 中 'input' 上 UA 樣式中使用 !important 設定的內部填充
+
+button,
+input {
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+}
+
+// 1. 移除 IE6/7/8/9 中的預設垂直捲軸
+// 2. 改善所有瀏覽器中的可讀性和對齊
+
+textarea {
+  overflow: auto; // 1
+  vertical-align: top; // 2
+}
+
+// =============================================================================
+// 表格
+// =============================================================================
+
+// 移除表格單元格之間的大部分間距
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input {
+
+  // 1. 修正 S5、Chrome 中的外觀設為 'searchfield'
+  // 2. 修正 S5、Chrome 中的 'box-sizing' 設為 'border-box'（包括 -moz 以未來證明）
+  &[type="search"] {
+    -webkit-appearance: textfield; // 廠商前綴屬性
+    -moz-appearance: textfield; // 廠商前綴屬性
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box; // 廠商前綴屬性
+    box-sizing: content-box;
+
+    // 在 Safari 5 和 Chrome 上移除內部填充和搜尋取消按鈕
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-decoration {
+      -webkit-appearance: none;
+    }
+  }
+
+  // 1. 修正 IE8/9/10 中的 'box-sizing' 設為 'content-box'
+  // 2. 移除 IE8/9/10 中的多餘填充
+  // 3. 移除 IE7 中的多餘填充
+  // 已知問題：IE6 中仍然保留多餘填充
+  &[type="checkbox"],
+  &[type="radio"] {
+    box-sizing: border-box; // 1
+    padding: 0; // 2
+
+    @if $legacy_support_for_ie {
+      *height: 13px; // 3
+      *width: 13px; // 3
+    }
+  }
+}

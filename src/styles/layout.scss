@@ -1,0 +1,27 @@
+/* 網格系統 */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.column {
+  flex: 1;
+  padding: 10px;
+}
+
+/* 頁眉 */
+.header {
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+/* 頁腳 */
+.footer {
+  background-color: #f0f0f0;
+  padding: 20px;
+}
