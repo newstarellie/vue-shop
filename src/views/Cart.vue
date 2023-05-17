@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>商品列表</h1>
+    <h1>購物車</h1>
   </div>
 </template>
 

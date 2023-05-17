@@ -8,7 +8,7 @@
 
 
 export default {
-  name: 'HomePage',
+  name: 'ProductsPage',
   components: {
   },
   created() {
@@ -23,4 +23,3 @@ export default {
 };
 </script>
 
-<style scoped></style>
