@@ -29,6 +29,18 @@ export default {
 <style lang="scss">
 #app {
   background-color: $primary-color;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+main {
+  flex: 1;
+}
+
+footer {
+  flex-shrink: 0;
 }
 
 .navbar {
