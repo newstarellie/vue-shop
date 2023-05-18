@@ -1,9 +1,7 @@
 <template>
   <div class="home">
     <h1>商品列表</h1>
-    <ProductList :ProductList="ProductList"></ProductList>
-    <p>{{ listData }}</p>
-
+    <ProductList :ProductList="productsList"></ProductList>
   </div>
 </template>
 
@@ -24,8 +22,8 @@ export default {
   created() {
   },
   computed: {
-    listData() {
-      return this.$store.state.ProductsModule.list;
+    productsList() {
+      return this.$store.state.ProductsModule.productsList;
     },
 
   },
