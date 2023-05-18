@@ -1,9 +1,6 @@
 // 引入 Vuex 和 Vue
 import { createStore } from 'vuex';
-// import productsModule from './modules/products';
-// import cartModule from './modules/cart';
-// import commonActions from './actions';
-// import orderModule from './modules/order';
+import ProductsModule from './modules/ProductsModule';
 
 
 // 定义状态对象
@@ -30,9 +27,9 @@ export default createStore({
   getters,
   actions,
   mutations,
-  // modules: {
-  //   products: productsModule,
-  //   cart: cartModule,
-  //   order: orderModule,
-  // },
+  modules: {
+    ProductsModule,
+    // cart: cartModule,
+    // order: orderModule,
+  },
 });
