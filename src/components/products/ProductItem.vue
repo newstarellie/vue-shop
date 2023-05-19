@@ -1,15 +1,28 @@
 <template>
   <li>
-    <p>{{ productName }}</p>
+    <img
+      :src="ProductItemInform.productImage"
+      :alt="ProductItemInform.productName"
+    />
+    <div>
+      <h3>{{ ProductItemInform.productName }}</h3>
+      <p>{{ ProductItemInform.productDescription }}</p>
+      <p>價格: {{ ProductItemInform.productPrice }} 元</p>
+    </div>
+    <button @click="addToCart">加入購物車</button>
   </li>
 </template>
 
 <script>
 export default {
   name: 'ProductItem',
-  props: ['productName'],
+  props: {
+    ProductItemInform: {
+      type: Object,
+      required: true,
+    },
+  },
   methods: {
-
   },
 };
 </script>

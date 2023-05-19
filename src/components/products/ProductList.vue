@@ -1,10 +1,12 @@
 <template>
   <!-- todo 要語意化 -->
   <ul>
-    <ProductItem v-for="ProductItem in ProductList" :key="ProductItem" :productName="ProductItem.productName">
+    <ProductItem
+      v-for="ProductItem in ProductList"
+      :key="ProductItem.productId"
+      :ProductItemInform="ProductItem"
+    >
     </ProductItem>
-
-    <!-- 可以將ProductItem 寫成object 然後用props引入ProductItem -->
   </ul>
 </template>
 
