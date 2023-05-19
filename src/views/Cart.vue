@@ -36,6 +36,7 @@
           </tr>
         </tbody>
       </table>
+      <p>總金額: {{ totalCartAmount }}</p>
     </div>
     <p v-else>購物車是空的</p>
   </div>
@@ -56,6 +57,9 @@ export default {
     cartIsEmpty() {
       return this.inCartProductsList[0] ? false : true;
     },
+    totalCartAmount() {
+      return this.$store.getters.totalCartAmount;
+    }
   },
   methods: {
     clearCart() {

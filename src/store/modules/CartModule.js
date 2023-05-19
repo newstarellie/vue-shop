@@ -6,6 +6,11 @@ const state = {
 
 // 定义 getters 对象
 const getters = {
+  totalCartAmount(state) {
+    return state.cartItems.reduce((total, item) => {
+      return total + item.productPrice * item.quantity;
+    }, 0);
+  }
 };
 
 // 定义 actions 对象
