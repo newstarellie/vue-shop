@@ -41,6 +41,16 @@ const actions = {
   setCartItemsToLocalStorage({ dispatch }) {
     const payload = { name: 'cartItems', data: JSON.stringify(state.cartItems) };
     dispatch('setToLocalStorage', payload);
+  },
+  updateCartItemQuantity({ commit, state, dispatch }, payload) {
+    const { productId, newQuantity } = payload;
+    // 找到对应的商品在购物车中的索引
+    const itemIndex = state.cartItems.findIndex(item => item.productId === productId);
+    if (itemIndex !== -1) {
+      // 更新对应商品的数量
+      commit('UPDATE_CART_ITEM_QUANTITY', { itemIndex, newQuantity });
+    }
+    dispatch('setCartItemsToLocalStorage')
   }
 
 };
@@ -63,6 +73,16 @@ const mutations = {
   REMOVE_CART_ITEM(state, itemIndex) {
     state.cartItems.splice(itemIndex, 1);
   },
+  UPDATE_CART_ITEM_QUANTITY(state, payload) {
+    const { itemIndex, newQuantity } = payload;
+    if (newQuantity >= 1) {
+      // 更新对应商品的数量
+      state.cartItems[itemIndex].quantity = newQuantity;
+    } else {
+      // 数量无效，从购物车中移除该商品
+      state.cartItems.splice(itemIndex, 1);
+    }
+  }
 };
 
 export default {
