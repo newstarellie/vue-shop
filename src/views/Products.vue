@@ -25,7 +25,6 @@ export default {
     productsList() {
       return this.$store.state.ProductsModule.productsList;
     },
-
   },
   methods: {
 

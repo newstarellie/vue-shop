@@ -1,6 +1,7 @@
 // 引入 Vuex 和 Vue
 import { createStore } from 'vuex';
 import ProductsModule from './modules/ProductsModule';
+import CartModule from './modules/CartModule';
 
 
 // 定义状态对象
@@ -28,8 +29,7 @@ export default createStore({
   actions,
   mutations,
   modules: {
-    ProductsModule,
-    // cart: cartModule,
-    // order: orderModule,
+    ProductsModule: ProductsModule,
+    CartModule: CartModule,
   },
 });

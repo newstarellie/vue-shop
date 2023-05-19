@@ -9,7 +9,7 @@
       <p>{{ ProductItemInform.productDescription }}</p>
       <p>價格: {{ ProductItemInform.productPrice }} 元</p>
     </div>
-    <button @click="addToCart">加入購物車</button>
+    <button @click="addToCart(ProductItemInform)">加入購物車</button>
   </li>
 </template>
 
@@ -23,6 +23,15 @@ export default {
     },
   },
   methods: {
+    addToCart(ProductItemInform) {
+      return this.$store.dispatch('CartModule/addToCart', ProductItemInform);
+    },
+  },
+  computed: {
+    productsList() {
+      return this.$store.state.CartModule.cartItems;
+    },
+
   },
 };
 </script>
