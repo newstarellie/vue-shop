@@ -11,36 +11,51 @@ const getters = {
 
 // 定义 actions 对象
 const actions = {
-  addToCart({ commit, state }, product) {
+  getCartItemFromLocalStorage({ commit, dispatch }) {
+    dispatch('getLocalStorage', { name: 'cartItems' }).then(data => {
+      commit('setCartItemData', data);
+    });
+  },
+  addToCart({ commit, state, dispatch }, product) {
     const itemIndex = state.cartItems.findIndex((item) => item.productId === product.productId);
     if (itemIndex !== -1) {
       commit('incrementCartItemQuantity', itemIndex);
     } else {
       commit('addCartItem', product);
     }
-    commit('setToLocalStorage', 'cartItems', state.cartItems);
+    const payload = { name: 'cartItems', data: JSON.stringify(state.cartItems) };
+    dispatch('setToLocalStorage', payload);
+  },
+
+  // todo 加入公用的模組
+  setToLocalStorage({ commit }, payload) {
+    console.log(commit);
+    localStorage.setItem(payload.name, payload.data);
+  },
+  getLocalStorage({ commit }, payload) {
+    console.log(commit);
+    let localStorageData = JSON.parse(localStorage.getItem(payload.name)) || [];
+    return localStorageData;
   },
 };
 
 // 定义 mutations 对象
+// todo 改成大寫的
 const mutations = {
+  setCartItemData(state, data) {
+    state.cartItems = { ...data };
+  },
   addCartItem(state, product) {
     let productWithQuantity = {
       ...product,
       quantity: 1
     };
     state.cartItems.push(productWithQuantity);
-
-    // console.log(state.cartItems);
   },
   incrementCartItemQuantity(state, itemIndex) {
     state.cartItems[itemIndex].quantity++;
-    // console.log(state.cartItems[itemIndex].quantity)
   },
-  setToLocalStorage(localStorageName, storeData) {
-    // console.log(storeData);
-    localStorage.setItem(localStorageName, JSON.stringify(storeData));
-  },
+
 };
 
 export default {

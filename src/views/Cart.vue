@@ -13,7 +13,7 @@ export default {
   components: {
   },
   created() {
-
+    this.$store.dispatch('getCartItemFromLocalStorage');
   },
   computed: {
     inCartProductsList() {
