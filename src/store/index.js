@@ -15,7 +15,15 @@ const getters = {
 
 // 定义 actions 对象
 const actions = {
-  // ...commonActions,
+  setToLocalStorage({ commit }, payload) {
+    console.log(commit);
+    localStorage.setItem(payload.name, payload.data);
+  },
+  getLocalStorage({ commit }, payload) {
+    console.log(commit);
+    let localStorageData = JSON.parse(localStorage.getItem(payload.name)) || [];
+    return localStorageData;
+  },
 };
 
 // 定义 mutations 对象

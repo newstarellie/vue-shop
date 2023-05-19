@@ -25,17 +25,6 @@ const actions = {
     const payload = { name: 'cartItems', data: JSON.stringify(state.cartItems) };
     dispatch('setToLocalStorage', payload);
   },
-
-  // todo 加入公用的模組
-  setToLocalStorage({ commit }, payload) {
-    console.log(commit);
-    localStorage.setItem(payload.name, payload.data);
-  },
-  getLocalStorage({ commit }, payload) {
-    console.log(commit);
-    let localStorageData = JSON.parse(localStorage.getItem(payload.name)) || [];
-    return localStorageData;
-  },
 };
 
 // 定义 mutations 对象
