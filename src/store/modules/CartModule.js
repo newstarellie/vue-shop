@@ -12,9 +12,9 @@ const getters = {
 // 定义 actions 对象
 const actions = {
   addToCart({ commit, state }, product) {
-    const itemIndex = state.cartItems.findIndex((item) => item.id === product.id);
+    const itemIndex = state.cartItems.findIndex((item) => item.productId === product.productId);
     if (itemIndex !== -1) {
-      commit('incrementCartItemQuantity');
+      commit('incrementCartItemQuantity', itemIndex);
     } else {
       commit('addCartItem', product);
     }
@@ -25,13 +25,20 @@ const actions = {
 // 定义 mutations 对象
 const mutations = {
   addCartItem(state, product) {
-    state.cartItems.push({ ...product, quantity: 1 });
+    let productWithQuantity = {
+      ...product,
+      quantity: 1
+    };
+    state.cartItems.push(productWithQuantity);
+
+    // console.log(state.cartItems);
   },
   incrementCartItemQuantity(state, itemIndex) {
     state.cartItems[itemIndex].quantity++;
+    // console.log(state.cartItems[itemIndex].quantity)
   },
   setToLocalStorage(localStorageName, storeData) {
-    console.log(storeData);
+    // console.log(storeData);
     localStorage.setItem(localStorageName, JSON.stringify(storeData));
   },
 };

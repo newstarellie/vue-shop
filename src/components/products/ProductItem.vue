@@ -24,7 +24,8 @@ export default {
   },
   methods: {
     addToCart(ProductItemInform) {
-      return this.$store.dispatch('CartModule/addToCart', ProductItemInform);
+      // console.log(ProductItemInform)
+      return this.$store.dispatch('addToCart', ProductItemInform);
     },
   },
   computed: {
