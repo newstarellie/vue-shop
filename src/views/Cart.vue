@@ -29,7 +29,7 @@
           </td>
           <td>{{ inCartProduct.productPrice * inCartProduct.quantity }}</td>
           <td>
-            <button>移除</button>
+            <button @click="removeCartItem(inCartProduct)">移除</button>
           </td>
         </tr>
       </tbody>
@@ -48,7 +48,6 @@ export default {
   },
   computed: {
     inCartProductsList() {
-      console.log(this.$store.state.CartModule.cartItems);
       return this.$store.state.CartModule.cartItems;
     },
     cartIsEmpty() {
@@ -59,6 +58,9 @@ export default {
   methods: {
     clearCart() {
       this.$store.dispatch('clearCartItems');
+    },
+    removeCartItem(product) {
+      this.$store.dispatch('removeCartItem', product);
     }
   }
 };

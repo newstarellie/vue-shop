@@ -22,11 +22,23 @@ const actions = {
     } else {
       commit('ADD_CART_ITEM', product);
     }
-    const payload = { name: 'cartItems', data: JSON.stringify(state.cartItems) };
-    dispatch('setToLocalStorage', payload);
+    dispatch('setCartItemsToLocalStorage');
+
   },
   clearCartItems({ commit, dispatch }) {
     commit('SET_CART_ITEM_DATA', [])
+    dispatch('setCartItemsToLocalStorage');
+
+  },
+  removeCartItem({ commit, dispatch }, product) {
+    const itemIndex = state.cartItems.findIndex((item) => item.productId === product.productId);
+    // 找得到id就移除
+    if (itemIndex !== -1) {
+      commit('REMOVE_CART_ITEM', itemIndex);
+      dispatch('setCartItemsToLocalStorage');
+    }
+  },
+  setCartItemsToLocalStorage({ dispatch }) {
     const payload = { name: 'cartItems', data: JSON.stringify(state.cartItems) };
     dispatch('setToLocalStorage', payload);
   }
@@ -47,6 +59,9 @@ const mutations = {
   },
   INCREMENT_CART_ITEM_QUANTITY(state, itemIndex) {
     state.cartItems[itemIndex].quantity++;
+  },
+  REMOVE_CART_ITEM(state, itemIndex) {
+    state.cartItems.splice(itemIndex, 1);
   },
 };
 
