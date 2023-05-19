@@ -25,6 +25,12 @@ const actions = {
     const payload = { name: 'cartItems', data: JSON.stringify(state.cartItems) };
     dispatch('setToLocalStorage', payload);
   },
+  clearCartItems({ commit, dispatch }) {
+    commit('SET_CART_ITEM_DATA', [])
+    const payload = { name: 'cartItems', data: JSON.stringify(state.cartItems) };
+    dispatch('setToLocalStorage', payload);
+  }
+
 };
 
 // 定义 mutations 对象
@@ -42,7 +48,6 @@ const mutations = {
   INCREMENT_CART_ITEM_QUANTITY(state, itemIndex) {
     state.cartItems[itemIndex].quantity++;
   },
-
 };
 
 export default {
