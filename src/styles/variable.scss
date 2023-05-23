@@ -5,11 +5,23 @@ $large-screen: 1200px;
 $x-large-screen: 1440px;
 
 
-$main-color: #8B0000;
-$bg-color: #F5DEB3;
-$text-color: #000;
-$text-color-hover: rgb(67, 67, 67);
 
-$primary-color: #42b983;
-$secondary-color: #35495e;
-$font-family: 'Helvetica Neue', Arial, sans-serif;
+// 颜色变量
+$primary-color: #E3CAA5 !default;
+$secondary-color: #e2a88b !default;
+$text-color: #3f3931;
+$text-color-hover: #FFEDDB;
+
+// 字体变量
+$font-family: 'Helvetica Neue', Arial, sans-serif; // 默认字体，使用 Arial 和后备字体
+$font-size-base: 16px !default; // 基本字体大小，默认值为 16px
+
+
+// 边距和尺寸变量
+$margin-sm: 8px !default; // 小间距，默认值为 8px
+$margin-md: 16px !default; // 中间距，默认值为 16px
+$margin-lg: 24px !default; // 大间距，默认值为 24px
+
+$padding-sm: 8px !default; // 小内边距，默认值为 8px
+$padding-md: 16px !default; // 中内边距，默认值为 16px
+$padding-lg: 24px !default; // 大内边距，默认值为 24px

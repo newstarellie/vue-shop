@@ -24,7 +24,6 @@ export default {
   },
   methods: {
     addToCart(ProductItemInform) {
-      // console.log(ProductItemInform)
       return this.$store.dispatch('addToCart', ProductItemInform);
     },
   },
