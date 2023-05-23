@@ -1,5 +1,4 @@
 <template>
-  <!-- todo 要語意化 -->
   <ul>
     <ProductItem
       v-for="ProductItem in ProductList"

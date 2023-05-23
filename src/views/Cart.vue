@@ -3,6 +3,7 @@
     <h1>購物車</h1>
     <div v-if="!cartIsEmpty">
       <button @click="clearCart">清空購物車</button>
+      <button @click="checkout">結帳</button>
       <!-- todo 這個部分可以拆分成元件 記得低耦性  -->
       <table>
         <thead>
@@ -65,6 +66,10 @@ export default {
   methods: {
     clearCart() {
       this.$store.dispatch('clearCartItems');
+    },
+    checkout() {
+      console.log(this.inCartProductsList)
+      this.$router.push('/checkout');
     },
     removeCartItem(product) {
       this.$store.dispatch('removeCartItem', product);
