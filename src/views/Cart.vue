@@ -3,6 +3,7 @@
     <h1>購物車</h1>
     <div v-if="!cartIsEmpty">
       <button @click="clearCart">清空購物車</button>
+      <!-- todo 這個部分可以拆分成元件 記得低耦性  -->
       <table>
         <thead>
           <tr>
