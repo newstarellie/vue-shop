@@ -1,16 +1,7 @@
 
 <template>
   <table>
-    <!-- todo thead => 元件 -->
-    <thead>
-      <tr>
-        <th>商品</th>
-        <th>價格</th>
-        <th>數量</th>
-        <th>小計</th>
-        <th>操作</th>
-      </tr>
-    </thead>
+    <tableHead :table-column="tableColumn"></tableHead>
     <!-- todo => 元件  -->
     <!-- todo input 切換 成不能輸入  -->
     <tbody>
@@ -38,6 +29,7 @@
 </template>
 
 <script>
+import tableHead from '@/components/common/table/table-head.vue'
 export default {
   name: 'cartItemList',
   props: {
@@ -45,6 +37,20 @@ export default {
       type: Array,
       required: true
     },
+  },
+  components: {
+    tableHead
+  },
+  data() {
+    return {
+      tableColumn: [
+        { label: '商品', width: '100px' },
+        { label: '價格', width: '80px' },
+        { label: '數量', width: '80px' },
+        { label: '小計', width: '100px' },
+        { label: '操作', width: '200px' }
+      ]
+    };
   },
   methods: {
     handleItemQuantityChange(product, newValue) {
