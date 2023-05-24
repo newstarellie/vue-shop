@@ -4,13 +4,16 @@
     <tableHead :table-column="tableColumn"></tableHead>
     <!-- todo => 元件  -->
     <!-- todo input 切換 成不能輸入  -->
-    <tableBody :inCartProductsList="inCartProductsList"></tableBody>
+    <tableBody
+      :dataList="inCartProductsList"
+      :checkoutStatus="checkoutStatus"
+    ></tableBody>
   </table>
 </template>
 
 <script>
 import tableHead from '@/components/common/table/table-head.vue';
-import tableBody from '@/components/common/table/table-body.vue'
+import tableBody from '@/components/cartItem/cartList-table-body.vue'
 export default {
   name: 'cartItemList',
   props: {
@@ -25,6 +28,8 @@ export default {
   },
   data() {
     return {
+      checkoutStatus: true,
+
       tableColumn: [
         { label: '商品', width: '100px' },
         { label: '價格', width: '80px' },
@@ -41,9 +46,6 @@ export default {
         newQuantity: newValue
       });
     },
-    removeCartItem(product) {
-      this.$store.dispatch('removeCartItem', product);
-    }
   },
 };
 </script>
