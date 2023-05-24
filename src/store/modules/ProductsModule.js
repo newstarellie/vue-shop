@@ -1,5 +1,5 @@
 import { ref, set } from "firebase/database";
-import { database } from "@/fr";
+import { database } from "@/firebase";
 
 // 定义状态对象
 const state = {
@@ -33,7 +33,7 @@ const actions = {
     console.log(ref);
     console.log(set);
     console.log(database)
-    let userId = 'kfops';
+    let userId = 'kfodsfdsps';
     set(ref(database, userId), {
       username: userId,
       // email: email,
