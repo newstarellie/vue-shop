@@ -8,7 +8,8 @@
     <input
       type="number"
       min="1"
-      :value="data"
+      v-model="dataNumber"
+      @change="this.$emit('changeValue',dataNumber)"
     />
   </td>
 
@@ -31,6 +32,14 @@ export default {
       type: String,
       required: true
     },
+  },
+  data() {
+    return {
+      dataNumber: 0,
+    }
+  },
+  created() {
+    this.dataNumber = this.data;
   },
 };
 </script>

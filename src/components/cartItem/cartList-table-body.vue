@@ -16,6 +16,7 @@
       <tableTd
         :dataForm="quantityInput"
         :data="dataItem.quantity"
+        @changeValue="(newValue) => handleItemQuantityChange(newValue, dataItem)"
       ></tableTd>
       <tableTd
         :dataForm="'text'"
@@ -53,7 +54,15 @@ export default {
       return dataItem.productPrice * dataItem.quantity;
     },
     removeCartItem(product) {
-      this.$store.dispatch('removeCartItem', product);
+      console.log('rem')
+      console.log(product)
+      // this.$store.dispatch('removeCartItem', product);
+    },
+    handleItemQuantityChange(newValue, product) {
+      this.$store.dispatch('updateCartItemQuantity', {
+        productId: product.productId,
+        newQuantity: newValue
+      });
     }
   },
   computed: {

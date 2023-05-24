@@ -2,12 +2,8 @@
 <template>
   <table>
     <tableHead :table-column="tableColumn"></tableHead>
-    <!-- todo => 元件  -->
-    <!-- todo input 切換 成不能輸入  -->
-    <tableBody
-      :dataList="inCartProductsList"
-      :checkoutStatus="checkoutStatus"
-    ></tableBody>
+    <tableBody :dataList="inCartProductsList">
+    </tableBody>
   </table>
 </template>
 
@@ -28,8 +24,6 @@ export default {
   },
   data() {
     return {
-      checkoutStatus: true,
-
       tableColumn: [
         { label: '商品', width: '100px' },
         { label: '價格', width: '80px' },
@@ -40,12 +34,7 @@ export default {
     };
   },
   methods: {
-    handleItemQuantityChange(product, newValue) {
-      this.$store.dispatch('updateCartItemQuantity', {
-        productId: product.productId,
-        newQuantity: newValue
-      });
-    },
+
   },
 };
 </script>
