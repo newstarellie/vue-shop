@@ -1,39 +1,7 @@
 <template>
   <div>
     <h2>結帳頁面</h2>
-    <table>
-      <thead>
-        <tr>
-          <!-- todo 元件化column -->
-          <th>商品</th>
-          <th>價格</th>
-          <th>數量</th>
-          <th>小計</th>
-          <th>操作</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          v-for="inCartProduct in inCartProductsList"
-          :key="inCartProduct.productId"
-        >
-          <td>{{ inCartProduct.productName }}</td>
-          <td>{{ inCartProduct.productPrice }}</td>
-          <td>
-            <input
-              type="number"
-              min="1"
-              :value="inCartProduct.quantity"
-              @change="handleItemQuantityChange(inCartProduct,$event.target.value)"
-            />
-          </td>
-          <td>{{ inCartProduct.productPrice * inCartProduct.quantity }}</td>
-          <td>
-            <button @click="removeCartItem(inCartProduct)">移除</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <cartItemList :inCartProductsList="inCartProductsList"></cartItemList>
     <p>總金額: {{ totalCartAmount }}</p>
     <form @submit.prevent="submitOrder">
       <label for="shipping-address">送貨地址</label>
@@ -60,6 +28,7 @@
 </template>
 
 <script>
+import cartItemList from '@/components/cartItem/cartItemList.vue'
 export default {
   name: 'CheckoutPage',
   data() {
@@ -67,6 +36,9 @@ export default {
       shippingAddress: '',
       paymentMethod: 'credit-card'
     }
+  },
+  components: {
+    cartItemList,
   },
   methods: {
     submitOrder() {
