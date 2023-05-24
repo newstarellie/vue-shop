@@ -4,6 +4,21 @@
     <cartItemList :inCartProductsList="inCartProductsList"></cartItemList>
     <p>總金額: {{ totalCartAmount }}</p>
     <form @submit.prevent="submitOrder">
+      <label for="name">姓名</label>
+      <input
+        type="text"
+        id="name"
+        v-model="name"
+        required
+      >
+
+      <label for="phone">電話</label>
+      <input
+        type="tel"
+        id="phone"
+        v-model="phone"
+        required
+      >
       <label for="shipping-address">送貨地址</label>
       <input
         type="text"
@@ -11,7 +26,13 @@
         v-model="shippingAddress"
         required
       >
-
+      <label for="postal-code">郵遞區號</label>
+      <input
+        type="text"
+        id="postal-code"
+        v-model="postalCode"
+        required
+      >
       <label for="payment-method">付款方式</label>
       <select
         id="payment-method"
@@ -33,7 +54,10 @@ export default {
   name: 'CheckoutPage',
   data() {
     return {
+      name: '',
+      phone: '',
       shippingAddress: '',
+      postalCode: '',
       paymentMethod: 'credit-card'
     }
   },
@@ -43,7 +67,7 @@ export default {
   methods: {
     submitOrder() {
       // 在這裡處理提交訂單的邏輯
-      // 可以使用 shippingAddress 和 paymentMethod 的值來建立訂單
+      // 可以使用 name、phone、shippingAddress、postalCode 和 paymentMethod 的值來建立訂單
       // 可以發送 API 請求或觸發其他相關操作
       console.log('訂單已提交');
     }
