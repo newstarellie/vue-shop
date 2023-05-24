@@ -21,6 +21,7 @@ export default {
   },
   created() {
     this.$store.dispatch('getCartItemFromLocalStorage');
+    this.$store.commit('changeCheckoutStatus', false);
   },
   computed: {
     inCartProductsList() {
