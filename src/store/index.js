@@ -1,9 +1,8 @@
 // 引入 Vuex 和 Vue
 import { createStore } from 'vuex';
-// import productsModule from './modules/products';
-// import cartModule from './modules/cart';
-// import commonActions from './actions';
-// import orderModule from './modules/order';
+import ProductsModule from './modules/ProductsModule';
+import CartModule from './modules/CartModule';
+import CheckoutModule from './modules/CheckoutModule';
 
 
 // 定义状态对象
@@ -17,7 +16,15 @@ const getters = {
 
 // 定义 actions 对象
 const actions = {
-  // ...commonActions,
+  setToLocalStorage({ commit }, payload) {
+    console.log(commit);
+    localStorage.setItem(payload.name, payload.data);
+  },
+  getLocalStorage({ commit }, payload) {
+    console.log(commit);
+    let localStorageData = JSON.parse(localStorage.getItem(payload.name)) || [];
+    return localStorageData;
+  },
 };
 
 // 定义 mutations 对象
@@ -30,9 +37,9 @@ export default createStore({
   getters,
   actions,
   mutations,
-  // modules: {
-  //   products: productsModule,
-  //   cart: cartModule,
-  //   order: orderModule,
-  // },
+  modules: {
+    ProductsModule: ProductsModule,
+    CartModule: CartModule,
+    CheckoutModule: CheckoutModule,
+  },
 });

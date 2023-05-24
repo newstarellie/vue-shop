@@ -1,7 +1,17 @@
 // 全局樣式
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
 body {
   font-family: $font-family;
-  color: $secondary-color;
+  color: $text-color;
+  text-align: center;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 h1,
@@ -13,20 +23,12 @@ h6 {
   color: $primary-color;
 }
 
-/* 全域CSS設定 */
-body {
-  font-family: Arial, sans-serif;
-  background-color: $bg-color;
-  margin: 0;
-  padding: 0;
-}
-
 /* 標題樣式 */
 h1 {
   font-size: 2em;
   text-align: center;
   margin-top: 0.5em;
-  color: $main-color;
+  color: $text-color;
 }
 
 /* 表單樣式 */
@@ -47,7 +49,7 @@ form {
 label {
   font-size: 1.2em;
   margin-bottom: 0.5em;
-  color: $main-color;
+  color: $text-color;
 }
 
 /* 輸入欄位樣式 */
@@ -56,7 +58,7 @@ input {
   padding: 0.5em;
   border-radius: 5px;
   border: none;
-  background-color: $bg-color;
+  background-color: $secondary-color;
   margin-bottom: 1em;
   color: $text-color;
   text-align: center;
@@ -64,7 +66,7 @@ input {
 
 /* 按鈕樣式 */
 button {
-  background-color: $main-color;
+  background-color: $secondary-color;
   color: #fff;
   padding: 0.5em 1em;
   border: none;
@@ -72,4 +74,29 @@ button {
   font-size: 1.2em;
   cursor: pointer;
   margin-top: 1em;
+}
+
+p {
+  margin: 0;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+
+  li {
+    margin: 0 10px;
+
+    a {
+      text-decoration: none;
+      color: $text-color;
+
+      &:hover {
+        color: $text-color-hover;
+      }
+    }
+  }
 }
