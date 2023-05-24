@@ -2,6 +2,7 @@
 import { createStore } from 'vuex';
 import ProductsModule from './modules/ProductsModule';
 import CartModule from './modules/CartModule';
+import CheckoutModule from './modules/CheckoutModule';
 
 
 // 定义状态对象
@@ -39,5 +40,6 @@ export default createStore({
   modules: {
     ProductsModule: ProductsModule,
     CartModule: CartModule,
+    CheckoutModule: CheckoutModule,
   },
 });
