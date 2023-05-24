@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, set } from "firebase/database";
+import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: "AIzaSyD81zKsJk1cPMyw2HUYnyQnTZ8lS6WgrrE",
@@ -18,18 +18,6 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
 
-function writeUserData(userId, name) {
-  console.log(userId);
-  // const db = getDatabase();
-  set(ref(database, userId), {
-    username: name,
-    // email: email,
-    // profile_picture: imageUrl
-  });
-}
-writeUserData('fd', 'name');
-
-
-export default {
+export {
   database
 }
