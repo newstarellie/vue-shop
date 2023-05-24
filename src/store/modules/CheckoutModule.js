@@ -16,7 +16,10 @@ const actions = {
 
 // 定义 mutations 对象
 const mutations = {
-
+  changeCheckoutStatus(state, data) {
+    state.checkoutStatus = data;
+    console.log(state.checkoutStatus)
+  }
 };
 
 export default {

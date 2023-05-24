@@ -3,7 +3,6 @@
     <h1>購物車</h1>
     <div v-if="!cartIsEmpty">
       <cartItemList :inCartProductsList="inCartProductsList"></cartItemList>
-
       <p>總金額: {{ totalCartAmount }}</p>
       <button @click="clearCart">清空購物車</button>
       <button @click="checkout">結帳</button>
@@ -39,7 +38,8 @@ export default {
       this.$store.dispatch('clearCartItems');
     },
     checkout() {
-      console.log(this.inCartProductsList)
+      this.$store.commit('changeCheckoutStatus', true);
+
       this.$router.push('/checkout');
     }
   }
