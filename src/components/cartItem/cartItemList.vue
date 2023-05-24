@@ -4,32 +4,13 @@
     <tableHead :table-column="tableColumn"></tableHead>
     <!-- todo => 元件  -->
     <!-- todo input 切換 成不能輸入  -->
-    <tbody>
-      <tr
-        v-for="inCartProduct in inCartProductsList"
-        :key="inCartProduct.productId"
-      >
-        <td>{{ inCartProduct.productName }}</td>
-        <td>{{ inCartProduct.productPrice }}</td>
-        <td>
-          <input
-            type="number"
-            min="1"
-            :value="inCartProduct.quantity"
-            @change="handleItemQuantityChange(inCartProduct,$event.target.value)"
-          />
-        </td>
-        <td>{{ inCartProduct.productPrice * inCartProduct.quantity }}</td>
-        <td>
-          <button @click="removeCartItem(inCartProduct)">移除</button>
-        </td>
-      </tr>
-    </tbody>
+    <tableBody :inCartProductsList="inCartProductsList"></tableBody>
   </table>
 </template>
 
 <script>
-import tableHead from '@/components/common/table/table-head.vue'
+import tableHead from '@/components/common/table/table-head.vue';
+import tableBody from '@/components/common/table/table-body.vue'
 export default {
   name: 'cartItemList',
   props: {
@@ -39,7 +20,8 @@ export default {
     },
   },
   components: {
-    tableHead
+    tableHead,
+    tableBody,
   },
   data() {
     return {
