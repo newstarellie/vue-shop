@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>商品列表</h1>
+    <h1>Home</h1>
     <!-- <ProductList :products="allProducts" @addToCart="addToCart" /> -->
   </div>
 </template>
