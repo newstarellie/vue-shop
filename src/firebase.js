@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getDatabase } from "firebase/database";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyD81zKsJk1cPMyw2HUYnyQnTZ8lS6WgrrE",
@@ -15,20 +16,22 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
+const db = getFirestore(app);
 
-const text = "Hello, Firebase!"; // 你想要傳遞的文本參數
 
-fetch('https://us-central1-vueshop-955e1.cloudfunctions.net/addMessage?text=' + text)
-  .then(response => response.json())
-  .then(data => {
-    console.log(data); // 在瀏覽器的開發者工具中查看回傳的結果
+// 印出messagesRef 的資料
+const messagesRef = collection(db, "messages");
+getDocs(messagesRef)
+  .then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      console.log(doc.id, " => ", doc.data());
+    });
   })
-  .catch(error => {
-    console.error('Error:', error);
+  .catch((error) => {
+    console.error("Error:", error);
   });
 
 
 export {
-  database
+  db
 }
