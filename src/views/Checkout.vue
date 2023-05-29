@@ -47,7 +47,6 @@ export default {
   },
   methods: {
     submitOrder() {
-
       this.$router.push('/lazy-loading');
       const payload = {
         orderNumber: this.orderNumber,

@@ -1,6 +1,8 @@
 
 import { setDoc, doc } from "firebase/firestore";
 import db from '@/firebase';
+import router from '@/router';
+import store from '@/store/index';
 
 // 定义状态对象
 const state = {
@@ -22,6 +24,10 @@ const actions = {
     return setDoc(documentRef, { ...payload })
       .then(() => {
         console.log("資料已成功存儲");
+        // 轉跳回主頁面  
+        router.push('/');
+        // 清空購物車
+        store.dispatch('clearCartItems');
       })
       .catch((error) => {
         console.error("儲存資料時發生錯誤：", error);
