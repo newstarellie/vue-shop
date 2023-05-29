@@ -4,6 +4,7 @@ import Products from '../views/Products.vue';
 import Cart from '../views/Cart.vue'
 import Contact from '../views/Contact.vue'
 import Checkout from '../views/Checkout.vue'
+import LazyLoading from '../views/LazyLoading.vue'
 
 
 
@@ -32,6 +33,11 @@ const routes = [
     path: '/contact',
     name: 'Contact',
     component: Contact,
+  },
+  {
+    path: '/lazy-loading',
+    name: 'LazyLoading',
+    component: LazyLoading,
   },
 ];
 
