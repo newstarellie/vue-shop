@@ -1,3 +1,5 @@
+import { ref, set } from "firebase/database";
+import { database } from "@/firebase";
 
 // 定义状态对象
 const state = {
@@ -27,6 +29,18 @@ const getters = {
 
 // 定义 actions 对象
 const actions = {
+  setFireBase() {
+    console.log(ref);
+    console.log(set);
+    console.log(database)
+    let userId = 'kfodsfdsps';
+    set(ref(database, userId), {
+      username: userId,
+      // email: email,
+      // profile_picture: imageUrl
+    });
+
+  },
 };
 
 // 定义 mutations 对象
