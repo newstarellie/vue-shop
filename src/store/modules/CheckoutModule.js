@@ -1,4 +1,7 @@
 
+import { setDoc, doc } from "firebase/firestore";
+import db from '@/firebase';
+
 // 定义状态对象
 const state = {
   checkoutStatus: false,
@@ -11,7 +14,20 @@ const getters = {
 
 // 定义 actions 对象
 const actions = {
+  saveData({ commit }, payload) {
+    console.log(commit);
 
+    const documentRef = doc(db, "orderRecord", payload.orderNumber);
+
+    return setDoc(documentRef, { ...payload })
+      .then(() => {
+        console.log("資料已成功存儲");
+      })
+      .catch((error) => {
+        console.error("儲存資料時發生錯誤：", error);
+        throw error; // 將錯誤向上傳遞，以便在需要時處理
+      });
+  },
 };
 
 // 定义 mutations 对象
