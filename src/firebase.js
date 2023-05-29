@@ -17,6 +17,17 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
+const text = "Hello, Firebase!"; // 你想要傳遞的文本參數
+
+fetch('https://us-central1-vueshop-955e1.cloudfunctions.net/addMessage?text=' + text)
+  .then(response => response.json())
+  .then(data => {
+    console.log(data); // 在瀏覽器的開發者工具中查看回傳的結果
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+
 
 export {
   database
