@@ -14,6 +14,7 @@
         :data="itemTotalPrice(dataItem)"></tableTd>
       <tableTd :dataForm="'button'"
         :data="'移除'"
+        v-if="!checkoutStatus"
         @click="removeCartItem(dataItem)"></tableTd>
     </tr>
   </tbody>

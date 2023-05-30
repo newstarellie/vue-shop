@@ -30,7 +30,6 @@ const getters = {
       return state.tableColumn.filter(column => column.showColumn);
     }
   },
-
 };
 
 // 定义 actions 对象
