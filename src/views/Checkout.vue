@@ -30,6 +30,8 @@
 
 <script>
 import cartItemList from '@/components/cartItem/cartItemList.vue'
+import { DateTime } from 'luxon';
+
 
 export default {
   name: 'CheckoutPage',
@@ -40,6 +42,7 @@ export default {
       shippingAddress: '',
       postalCode: '',
       paymentMethod: 'credit-card',
+      createdTime: DateTime.now().toFormat('yyyy-MM-dd-HH:mm:ss'),
     }
   },
   components: {
@@ -50,6 +53,7 @@ export default {
       this.$router.push('/lazy-loading');
       const payload = {
         orderNumber: this.orderNumber,
+        createdTime: this.createdTime,
         name: this.name,
         phone: this.phone,
         shippingAddress: this.shippingAddress,
@@ -76,7 +80,6 @@ export default {
         result += characters.charAt(Math.floor(Math.random() * characters.length));
       }
       return result;
-
     }
 
   },

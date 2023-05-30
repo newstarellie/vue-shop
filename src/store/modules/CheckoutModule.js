@@ -19,7 +19,7 @@ const actions = {
   saveData({ commit }, payload) {
     console.log(commit);
 
-    const documentRef = doc(db, "orderRecord", payload.orderNumber);
+    const documentRef = doc(db, "orderRecord", payload.createdTime);
 
     return setDoc(documentRef, { ...payload })
       .then(() => {
