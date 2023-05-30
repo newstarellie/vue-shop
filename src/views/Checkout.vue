@@ -67,6 +67,9 @@ export default {
   },
   created() {
     this.$store.dispatch('getCartItemFromLocalStorage');
+    this.$store.commit('changeCheckoutStatus', true);
+  },
+  unmounted() {
     this.$store.commit('changeCheckoutStatus', false);
   },
   methods: {
