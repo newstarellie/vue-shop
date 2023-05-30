@@ -65,6 +65,10 @@ export default {
   components: {
     cartItemList,
   },
+  created() {
+    this.$store.dispatch('getCartItemFromLocalStorage');
+    this.$store.commit('changeCheckoutStatus', false);
+  },
   methods: {
     submitOrder() {
       this.$router.push('/lazy-loading');
