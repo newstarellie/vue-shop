@@ -7,6 +7,13 @@ import store from '@/store/index';
 // 定义状态对象
 const state = {
   checkoutStatus: false,
+  tableColumn: [
+    { columnName: 'product', label: '商品', width: '100px', showColumn: true },
+    { columnName: 'price', label: '價格', width: '80px', showColumn: true },
+    { columnName: 'quantity', label: '數量', width: '80px', showColumn: true },
+    { columnName: 'total', label: '小計', width: '100px', showColumn: true },
+    { columnName: 'action', label: '操作', width: '200px', showColumn: true }
+  ]
 };
 
 // 定义 getters 对象
