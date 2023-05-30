@@ -5,18 +5,35 @@
     <p>總金額: {{ totalCartAmount }}</p>
     <form @submit.prevent="submitOrder">
       <label for="order-number">訂單編號</label>
-      <input type="text" id="order-number" v-model="orderNumber" readonly>
+      <input type="text"
+        id="order-number"
+        v-model="orderNumber"
+        readonly>
       <label for="name">姓名</label>
-      <input type="text" id="name" v-model="name" required>
+      <input type="text"
+        id="name"
+        v-model="name"
+        required>
 
       <label for="phone">電話</label>
-      <input type="tel" id="phone" v-model="phone" required>
+      <input type="tel"
+        id="phone"
+        v-model="phone"
+        required>
       <label for="shipping-address">送貨地址</label>
-      <input type="text" id="shipping-address" v-model="shippingAddress" required>
+      <input type="text"
+        id="shipping-address"
+        v-model="shippingAddress"
+        required>
       <label for="postal-code">郵遞區號</label>
-      <input type="text" id="postal-code" v-model="postalCode" required>
+      <input type="text"
+        id="postal-code"
+        v-model="postalCode"
+        required>
       <label for="payment-method">付款方式</label>
-      <select id="payment-method" v-model="paymentMethod" required>
+      <select id="payment-method"
+        v-model="paymentMethod"
+        required>
         <option value="credit-card">信用卡</option>
         <option value="paypal">PayPal</option>
       </select>
@@ -60,7 +77,7 @@ export default {
         postalCode: this.postalCode,
         paymentMethod: this.paymentMethod
       };
-      this.$store.dispatch('saveData', payload);
+      this.$store.dispatch('saveOrderToDatabase', payload);
       console.log('訂單已提交');
 
     }

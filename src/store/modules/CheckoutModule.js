@@ -23,7 +23,7 @@ const getters = {
 
 // 定义 actions 对象
 const actions = {
-  saveData({ commit }, payload) {
+  saveOrderToDatabase({ commit }, payload) {
     console.log(commit);
 
     const documentRef = doc(db, "orderRecord", payload.createdTime);
