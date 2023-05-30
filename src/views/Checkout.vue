@@ -2,6 +2,7 @@
   <div>
     <h2>結帳頁面</h2>
     <cartItemList :inCartProductsList="inCartProductsList"></cartItemList>
+    <button @click="backToCart">回購物車</button>
     <p>總金額: {{ totalCartAmount }}</p>
     <form @submit.prevent="submitOrder">
       <label for="order-number">訂單編號</label>
@@ -86,7 +87,9 @@ export default {
       };
       this.$store.dispatch('saveOrderToDatabase', payload);
       console.log('訂單已提交');
-
+    },
+    backToCart() {
+      this.$router.push('/cart');
     }
   },
   computed: {
