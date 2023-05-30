@@ -18,6 +18,18 @@ const state = {
 
 // 定义 getters 对象
 const getters = {
+  filteredTableColumn(state) {
+    if (!state.checkoutStatus) {
+      return state.tableColumn.map(column => {
+        if (column.columnName === 'action') {
+          column.showColumn = false;
+        }
+        return column;
+      });
+    } else {
+      return state.tableColumn.filter(column => column.showColumn);
+    }
+  },
 
 };
 
@@ -47,7 +59,7 @@ const actions = {
 const mutations = {
   changeCheckoutStatus(state, data) {
     state.checkoutStatus = data;
-    console.log(state.checkoutStatus)
+    console.log(`結帳狀態:  ${state.checkoutStatus}`);
   }
 };
 

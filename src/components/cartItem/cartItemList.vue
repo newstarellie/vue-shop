@@ -24,7 +24,7 @@ export default {
   },
   computed: {
     tableColumn() {
-      return this.$store.state.CheckoutModule.tableColumn;
+      return this.$store.getters.filteredTableColumn;
     },
   }
 };
