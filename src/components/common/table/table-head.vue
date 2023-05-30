@@ -2,12 +2,13 @@
 <template>
   <thead>
     <tr>
-      <th
-        v-for="column in tableColumn"
+      <th v-for="column in tableColumn"
         :key="column"
-        :style="{ width: column.width }"
-      >{{column.label }}</th>
+        :style="{ width: column.width }">
+        {{column.label }}
+      </th>
     </tr>
+    <!-- {{ tableColumn }} -->
   </thead>
 </template>
 
@@ -19,9 +20,6 @@ export default {
       type: Array,
       required: true
     },
-  },
-  methods: {
-
   },
 };
 </script>

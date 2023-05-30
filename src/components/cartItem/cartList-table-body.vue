@@ -1,32 +1,21 @@
 
 <template>
   <tbody>
-    <tr
-      v-for="dataItem in dataList"
-      :key="dataItem.id"
-    >
-      <tableTd
-        :dataForm="'text'"
-        :data="dataItem.productName"
-      ></tableTd>
-      <tableTd
-        :dataForm="'text'"
-        :data="dataItem.productPrice"
-      ></tableTd>
-      <tableTd
-        :dataForm="quantityInput"
+    <tr v-for="dataItem in dataList"
+      :key="dataItem.id">
+      <tableTd :dataForm="'text'"
+        :data="dataItem.productName"></tableTd>
+      <tableTd :dataForm="'text'"
+        :data="dataItem.productPrice"></tableTd>
+      <tableTd :dataForm="quantityInput"
         :data="dataItem.quantity"
-        @changeValue="(newValue) => handleItemQuantityChange(newValue, dataItem)"
-      ></tableTd>
-      <tableTd
-        :dataForm="'text'"
-        :data="itemTotalPrice(dataItem)"
-      ></tableTd>
-      <tableTd
-        :dataForm="'button'"
+        @changeValue="(newValue) => handleItemQuantityChange(newValue, dataItem)"></tableTd>
+      <tableTd :dataForm="'text'"
+        :data="itemTotalPrice(dataItem)"></tableTd>
+      <tableTd :dataForm="'button'"
         :data="'移除'"
-        @click="removeCartItem(dataItem)"
-      ></tableTd>
+        v-if="!checkoutStatus"
+        @click="removeCartItem(dataItem)"></tableTd>
     </tr>
   </tbody>
 </template>
@@ -66,8 +55,11 @@ export default {
     }
   },
   computed: {
+    checkoutStatus() {
+      return this.$store.state.CheckoutModule.checkoutStatus
+    },
     quantityInput() {
-      return this.$store.state.CheckoutModule.checkoutStatus ? 'text' : 'input';
+      return this.checkoutStatus ? 'text' : 'input';
     },
   }
 };

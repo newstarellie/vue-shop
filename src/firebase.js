@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
 
 
 const firebaseConfig = {
@@ -18,20 +18,4 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-
-// 印出messagesRef 的資料
-const messagesRef = collection(db, "messages");
-getDocs(messagesRef)
-  .then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      console.log(doc.id, " => ", doc.data());
-    });
-  })
-  .catch((error) => {
-    console.error("Error:", error);
-  });
-
-
-export {
-  db
-}
+export default db;

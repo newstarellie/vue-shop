@@ -22,20 +22,11 @@ export default {
     tableHead,
     tableBody,
   },
-  data() {
-    return {
-      tableColumn: [
-        { label: '商品', width: '100px' },
-        { label: '價格', width: '80px' },
-        { label: '數量', width: '80px' },
-        { label: '小計', width: '100px' },
-        { label: '操作', width: '200px' }
-      ]
-    };
-  },
-  methods: {
-
-  },
+  computed: {
+    tableColumn() {
+      return this.$store.getters.filteredTableColumn;
+    },
+  }
 };
 </script>
 

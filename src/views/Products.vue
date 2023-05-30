@@ -20,7 +20,6 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch('setFireBase');
   },
   computed: {
     productsList() {
