@@ -8,26 +8,21 @@ import store from '@/store/index';
 const state = {
   checkoutStatus: false,
   tableColumn: [
-    { columnName: 'product', label: '商品', width: '100px', showColumn: true },
-    { columnName: 'price', label: '價格', width: '80px', showColumn: true },
-    { columnName: 'quantity', label: '數量', width: '80px', showColumn: true },
-    { columnName: 'total', label: '小計', width: '100px', showColumn: true },
-    { columnName: 'action', label: '操作', width: '200px', showColumn: true }
+    { columnName: 'product', label: '商品', width: '100px' },
+    { columnName: 'price', label: '價格', width: '80px' },
+    { columnName: 'quantity', label: '數量', width: '80px' },
+    { columnName: 'total', label: '小計', width: '100px' },
+    { columnName: 'action', label: '操作', width: '200px' }
   ]
 };
 
 // 定义 getters 对象
 const getters = {
   filteredTableColumn(state) {
-    if (!state.checkoutStatus) {
-      return state.tableColumn.map(column => {
-        if (column.columnName === 'action') {
-          column.showColumn = false;
-        }
-        return column;
-      });
+    if (state.checkoutStatus) {
+      return state.tableColumn.filter(column => column.columnName !== 'action');
     } else {
-      return state.tableColumn.filter(column => column.showColumn);
+      return state.tableColumn;
     }
   },
 };
