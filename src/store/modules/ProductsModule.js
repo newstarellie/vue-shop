@@ -19,6 +19,14 @@ const state = {
       productInventory: 10,
       productImage: 'https://fakeimg.pl/100x30/'
     },
+    {
+      productId: 3,
+      productName: '產品c',
+      productDescription: '一個很棒的產品',
+      productPrice: 100,
+      productInventory: 10,
+      productImage: 'https://fakeimg.pl/100x30/'
+    },
   ],
 };
 
