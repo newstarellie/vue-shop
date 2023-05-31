@@ -61,7 +61,8 @@ export default {
       // 註冊邏輯
       console.log('註冊');
       this.$router.push('/');
-      this.$store.dispatch('LoginModule/login', this.username);
+      const userData = { username: this.username, password: this.password };
+      this.$store.dispatch('LoginModule/register', userData);
     },
     toggleForm() {
       this.isRegister = !this.isRegister; // 切換註冊和登入頁面

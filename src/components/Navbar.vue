@@ -19,7 +19,8 @@
 
       <!-- 顯示登入狀態的區域 -->
       <li v-if="isLogged">
-        歡迎，{{ username }}！ <a @click="logout">登出</a>
+        歡迎{{ username }}
+        <a @click="logout">登出</a>
       </li>
       <li v-else>
         <a href="/login">登入</a>
@@ -32,6 +33,17 @@
 
 export default {
   name: 'NavbarComponent',
+  created() {
+    this.$store.dispatch('LoginModule/getUserDataToLocalStorage')
+  },
+  computed: {
+    isLogged() {
+      return this.$store.state.LoginModule.isLoggedIn;
+    },
+    username() {
+      return this.$store.state.LoginModule.user;
+    }
+  }
 };
 </script>
 
