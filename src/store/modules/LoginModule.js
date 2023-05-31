@@ -1,4 +1,6 @@
-// loginModule.js
+import { setDoc, doc } from "firebase/firestore";
+import db from '@/firebase';
+import router from '@/router';
 
 const state = {
   isLoggedIn: false, // 登入狀態
@@ -31,6 +33,24 @@ const actions = {
     commit('SET_LOGIN_STATUS', true);
     commit('SET_USER', userData.username);
     dispatch('setUserDataToLocalStorage', userData);
+    dispatch('saveUserDataToDatabase', userData);
+  },
+
+  // todo 可以放入index.js 統一調用
+  saveUserDataToDatabase({ commit }, payload) {
+    console.log(commit);
+    const documentRef = doc(db, "accountList", payload.username);
+
+    return setDoc(documentRef, { ...payload })
+      .then(() => {
+        console.log("會員資料已成功存儲");
+        // 轉跳回主頁面  
+        router.push('/');
+      })
+      .catch((error) => {
+        console.error("儲存 會員資料時發生錯誤：", error);
+        throw error; // 將錯誤向上傳遞，以便在需要時處理
+      });
   },
   setUserDataToLocalStorage({ dispatch }, userData) {
     const payload = { name: 'userData', data: JSON.stringify(userData) };
