@@ -54,10 +54,12 @@ export default {
       // 您可以在這裡使用 this.username 和 this.password 來獲取用戶輸入的資訊
       // 可以向後端發送 API 請求進行驗證
       console.log('登入')
+      this.$router.push('/');
     },
     register() {
       // 註冊邏輯
       console.log('註冊');
+      this.$router.push('/');
     },
     toggleForm() {
       this.isRegister = !this.isRegister; // 切換註冊和登入頁面
