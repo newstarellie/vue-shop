@@ -13,6 +13,9 @@
       <li>
         <router-link to="/login">登入</router-link>
       </li>
+      <li>
+        <router-link to="/login">Login</router-link>
+      </li>
     </ul>
   </nav>
 </template>
