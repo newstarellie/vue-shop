@@ -10,17 +10,9 @@ const getters = {
   user: state => state.user
 }
 
-const mutations = {
-  SET_LOGIN_STATUS(state, status) {
-    state.isLoggedIn = status
-  },
-  SET_USER(state, user) {
-    state.user = user
-  }
-}
-
 const actions = {
   login({ commit }, user) {
+    console.log(user)
     // 登入邏輯
     // 在這裡執行後端驗證等相關操作
     // 登入成功後觸發 mutation
@@ -33,6 +25,23 @@ const actions = {
     // 登出成功後觸發 mutation
     commit('SET_LOGIN_STATUS', false)
     commit('SET_USER', null)
+  },
+  register({ commit }, user) {
+    // 註冊邏輯
+    // 在這裡執行相關的註冊操作
+    console.log('註冊')
+    console.log(user)
+
+    commit('SET_LOGIN_STATUS', true)
+    commit('SET_USER', user)
+  }
+}
+const mutations = {
+  SET_LOGIN_STATUS(state, status) {
+    state.isLoggedIn = status
+  },
+  SET_USER(state, user) {
+    state.user = user
   }
 }
 
