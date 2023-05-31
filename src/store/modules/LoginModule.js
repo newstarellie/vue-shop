@@ -26,15 +26,22 @@ const actions = {
     commit('SET_LOGIN_STATUS', false)
     commit('SET_USER', null)
   },
-  register({ commit }, user) {
-    // 註冊邏輯
-    // 在這裡執行相關的註冊操作
+  register({ commit, dispatch }, userData) {
     console.log('註冊')
-    console.log(user)
-
-    commit('SET_LOGIN_STATUS', true)
-    commit('SET_USER', user)
-  }
+    commit('SET_LOGIN_STATUS', true);
+    commit('SET_USER', userData.username);
+    dispatch('setUserDataToLocalStorage', userData);
+  },
+  setUserDataToLocalStorage({ dispatch }, userData) {
+    const payload = { name: 'userData', data: JSON.stringify(userData) };
+    dispatch('setToLocalStorage', payload, { root: true });
+  },
+  getUserDataToLocalStorage({ commit, dispatch }) {
+    dispatch('getLocalStorage', { name: 'userData' }, { root: true }).then(data => {
+      commit('SET_LOGIN_STATUS', true);
+      commit('SET_USER', data.username);
+    });
+  },
 }
 const mutations = {
   SET_LOGIN_STATUS(state, status) {
