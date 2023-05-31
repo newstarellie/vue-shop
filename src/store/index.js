@@ -3,6 +3,7 @@ import { createStore } from 'vuex';
 import ProductsModule from './modules/ProductsModule';
 import CartModule from './modules/CartModule';
 import CheckoutModule from './modules/CheckoutModule';
+import LoginModule from './modules/LoginModule';
 
 
 // 定义状态对象
@@ -41,5 +42,6 @@ export default createStore({
     ProductsModule: ProductsModule,
     CartModule: CartModule,
     CheckoutModule: CheckoutModule,
+    LoginModule: LoginModule,
   },
 });
