@@ -43,9 +43,7 @@ export default {
       return dataItem.productPrice * dataItem.quantity;
     },
     removeCartItem(product) {
-      console.log('rem')
-      console.log(product)
-      // this.$store.dispatch('removeCartItem', product);
+      this.$store.dispatch('removeCartItem', product);
     },
     handleItemQuantityChange(newValue, product) {
       this.$store.dispatch('updateCartItemQuantity', {

@@ -5,16 +5,14 @@
   </td>
 
   <td v-else-if="dataForm == 'input'">
-    <input
-      type="number"
+    <input type="number"
       min="1"
       v-model="dataNumber"
-      @change="this.$emit('changeValue',dataNumber)"
-    />
+      @change="this.$emit('changeValue',dataNumber)" />
   </td>
 
   <td v-else-if="dataForm == 'button'">
-    <button @click="this.$emit('click')">
+    <button>
       {{ data }}
     </button>
   </td>
