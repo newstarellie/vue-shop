@@ -16,6 +16,14 @@
       <li>
         <router-link to="/login">Login</router-link>
       </li>
+
+      <!-- 顯示登入狀態的區域 -->
+      <li v-if="isLogged">
+        歡迎，{{ username }}！ <a @click="logout">登出</a>
+      </li>
+      <li v-else>
+        <a href="/login">登入</a>
+      </li>
     </ul>
   </nav>
 </template>
