@@ -27,15 +27,12 @@
     </form>
     <div>
       <button @click="toggleForm">{{ isRegister ? '已有帳號？登入' : '還沒有帳號？註冊' }}</button>
-      <button @click="hashPassword">加密密碼</button>
     </div>
   </div>
 </template>
 
 <script>
 import bcrypt from 'bcryptjs';
-import { useToast } from 'vue-toastification';
-
 
 export default {
   name: 'LoginPage',
@@ -48,11 +45,8 @@ export default {
   },
   methods: {
     async hashPassword() {
-      const toast = useToast();
-      toast("I'm a toast"); // 使用 
       const saltRounds = 10;
       const hashedPassword = await bcrypt.hash(this.password, saltRounds);
-      console.log('加密後的密碼:', hashedPassword);
       return hashedPassword;
     },
     handleSubmit() {
@@ -63,22 +57,17 @@ export default {
       }
     },
     login() {
-      // 在這裡處理登入邏輯
-      // 您可以在這裡使用 this.username 和 this.password 來獲取用戶輸入的資訊
-      // 可以向後端發送 API 請求進行驗證
-      console.log('登入')
       this.$store.dispatch('LoginModule/login', this.username);
       this.$router.push('/');
     },
     async register() {
-      // 註冊邏輯
-      console.log('註冊');
       const hashedPassword = await this.hashPassword();
       const userData = { username: this.username, password: hashedPassword };
       this.$store.dispatch('LoginModule/handleRegister', userData);
     },
+    // 切換註冊和登入頁面
     toggleForm() {
-      this.isRegister = !this.isRegister; // 切換註冊和登入頁面
+      this.isRegister = !this.isRegister;
     }
   }
 }

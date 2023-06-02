@@ -22,12 +22,12 @@ const actions = {
     commit('SET_LOGIN_STATUS', true)
     commit('SET_USER', user)
   },
-  logout({ commit }) {
-    // 登出邏輯
-    // 在這裡執行相關操作，如清除使用者資訊等
-    // 登出成功後觸發 mutation
+  logout({ commit, dispatch }) {
     commit('SET_LOGIN_STATUS', false)
     commit('SET_USER', null)
+    dispatch('setUserNameToLocalStorage', null);
+    // todo 設定通知toast
+
   },
   handleRegister({ commit, dispatch }, userData) {
     return dispatch('saveUserDataToDatabase', userData)
@@ -80,14 +80,18 @@ const actions = {
       });
   },
   setUserNameToLocalStorage({ dispatch }, username) {
-    const payload = { name: 'username', data: JSON.stringify({ name: username }) };
+    const payload = { name: 'username', data: JSON.stringify(username) };
     console.log(username);
     dispatch('setToLocalStorage', payload, { root: true });
   },
   getUserDataToLocalStorage({ commit, dispatch }) {
     dispatch('getLocalStorage', { name: 'username' }, { root: true }).then(data => {
-      commit('SET_LOGIN_STATUS', true);
-      commit('SET_USER', data);
+      // 如果有存在LocalStorage
+      if (data.length == -1) {
+        console.log('dji')
+        commit('SET_USER', data);
+        commit('SET_LOGIN_STATUS', true);
+      }
     });
   },
 }

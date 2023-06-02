@@ -13,18 +13,19 @@
       <li>
         <router-link to="/contact">Contact</router-link>
       </li>
-      <li>
+      <li v-if="!isLogged">
         <router-link to="/login">Login</router-link>
       </li>
 
-      <!-- 顯示登入狀態的區域 -->
-      <li v-if="isLogged">
-        歡迎{{ username }}
-        <a @click="logout">登出</a>
-      </li>
-      <li v-else>
-        <a href="/login">登入</a>
-      </li>
+      <template v-if="isLogged">
+        <li>
+          <router-link to="/userAccount">{{ username }}</router-link>
+        </li>
+        <li>
+          <router-link to="/"
+            @click="logout">Logout</router-link>
+        </li>
+      </template>
     </ul>
   </nav>
 </template>
@@ -43,7 +44,12 @@ export default {
     username() {
       return this.$store.state.LoginModule.user;
     }
-  }
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch('LoginModule/logout');
+    },
+  },
 };
 </script>
 
