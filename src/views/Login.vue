@@ -34,6 +34,8 @@
 
 <script>
 import bcrypt from 'bcryptjs';
+import { useToast } from 'vue-toastification';
+
 
 export default {
   name: 'LoginPage',
@@ -46,6 +48,8 @@ export default {
   },
   methods: {
     async hashPassword() {
+      const toast = useToast();
+      toast("I'm a toast"); // 使用 
       const saltRounds = 10;
       const hashedPassword = await bcrypt.hash(this.password, saltRounds);
       console.log('加密後的密碼:', hashedPassword);

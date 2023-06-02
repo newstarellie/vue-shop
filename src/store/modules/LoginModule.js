@@ -48,7 +48,7 @@ const actions = {
         if (!querySnapshot.empty) {
           return '帳號已存在，請使用其他帳號';
         } else {
-          const documentRef = doc(collectionRef);
+          const documentRef = doc(db, "accountList", payload.username);
           return setDoc(documentRef, { ...payload });
         }
       })
