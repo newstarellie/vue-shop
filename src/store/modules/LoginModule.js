@@ -48,7 +48,7 @@ const actions = {
         if (!querySnapshot.empty) {
           return '帳號已存在，請使用其他帳號';
         } else {
-          const documentRef = doc(db, "accountList", payload.username);
+          const documentRef = doc(collectionRef, payload.username);
           return setDoc(documentRef, { ...payload });
         }
       })
@@ -68,7 +68,7 @@ const actions = {
       });
   },
   setUserDataToLocalStorage({ dispatch }, userData) {
-    const payload = { name: 'userData', data: JSON.stringify(userData) };
+    const payload = { name: 'username', data: JSON.stringify(userData) };
     dispatch('setToLocalStorage', payload, { root: true });
   },
   getUserDataToLocalStorage({ commit, dispatch }) {
