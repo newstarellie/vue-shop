@@ -33,7 +33,6 @@ const actions = {
     return dispatch('saveUserDataToDatabase', userData)
       .then((result) => {
         // todo 設定通知toast
-
         console.log('返回結果：', result);
         // 在這裡處理返回的結果
         dispatch('setUserNameToLocalStorage', userData.username);
@@ -81,13 +80,14 @@ const actions = {
       });
   },
   setUserNameToLocalStorage({ dispatch }, username) {
-    const payload = { name: 'username', data: JSON.stringify(username) };
+    const payload = { name: 'username', data: JSON.stringify({ name: username }) };
+    console.log(username);
     dispatch('setToLocalStorage', payload, { root: true });
   },
   getUserDataToLocalStorage({ commit, dispatch }) {
-    dispatch('getLocalStorage', { name: 'userData' }, { root: true }).then(data => {
+    dispatch('getLocalStorage', { name: 'username' }, { root: true }).then(data => {
       commit('SET_LOGIN_STATUS', true);
-      commit('SET_USER', data.username);
+      commit('SET_USER', data);
     });
   },
 }
