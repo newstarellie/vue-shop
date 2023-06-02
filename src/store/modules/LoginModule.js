@@ -32,14 +32,15 @@ const actions = {
     commit('SET_USER', userData.username);
     dispatch('setUserDataToLocalStorage', userData);
   },
-  setUserDataToLocalStorage({ dispatch }, userData) {
-    const payload = { name: 'userData', data: JSON.stringify(userData) };
+  setUserNameToLocalStorage({ dispatch }, username) {
+    const payload = { name: 'username', data: JSON.stringify({ name: username }) };
+    console.log(username);
     dispatch('setToLocalStorage', payload, { root: true });
   },
   getUserDataToLocalStorage({ commit, dispatch }) {
-    dispatch('getLocalStorage', { name: 'userData' }, { root: true }).then(data => {
+    dispatch('getLocalStorage', { name: 'username' }, { root: true }).then(data => {
       commit('SET_LOGIN_STATUS', true);
-      commit('SET_USER', data.username);
+      commit('SET_USER', data);
     });
   },
 }
