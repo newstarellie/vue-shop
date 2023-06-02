@@ -29,12 +29,27 @@ const actions = {
     commit('SET_LOGIN_STATUS', false)
     commit('SET_USER', null)
   },
-  register({ commit, dispatch }, userData) {
-    console.log('註冊')
-    commit('SET_LOGIN_STATUS', true);
-    commit('SET_USER', userData.username);
-    dispatch('setUserDataToLocalStorage', userData);
-    dispatch('saveUserDataToDatabase', userData);
+  handleRegister({ commit, dispatch }, userData) {
+    return dispatch('saveUserDataToDatabase', userData)
+      .then((result) => {
+        // todo 設定通知toast
+
+        console.log('返回結果：', result);
+        // 在這裡處理返回的結果
+        dispatch('setUserNameToLocalStorage', userData.username);
+        commit('SET_LOGIN_STATUS', true);
+        commit('SET_USER', userData.username);
+        router.push('/');
+      })
+      .catch((error) => {
+        console.error('儲存會員資料時發生錯誤：', error);
+        router.push('/login');
+
+        // todo 設定通知toast
+        // 在這裡處理錯誤
+      });
+    // dispatch('setUserNameToLocalStorage', userData.username);
+
   },
   saveUserDataToDatabase({ commit }, payload) {
     console.log(commit);
@@ -57,18 +72,16 @@ const actions = {
           console.log(result);
           return Promise.reject(result);
         } else {
-          console.log('會員資料已成功存儲');
-          router.push('/');
+          return '會員資料已成功存儲';
         }
       })
       .catch((error) => {
         console.error('儲存會員資料時發生錯誤：', error);
-        router.push('/login');
         return '儲存會員資料時發生錯誤';
       });
   },
-  setUserDataToLocalStorage({ dispatch }, userData) {
-    const payload = { name: 'username', data: JSON.stringify(userData) };
+  setUserNameToLocalStorage({ dispatch }, username) {
+    const payload = { name: 'username', data: JSON.stringify(username) };
     dispatch('setToLocalStorage', payload, { root: true });
   },
   getUserDataToLocalStorage({ commit, dispatch }) {

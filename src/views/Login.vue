@@ -75,7 +75,7 @@ export default {
       console.log('註冊');
       const hashedPassword = await this.hashPassword();
       const userData = { username: this.username, password: hashedPassword };
-      this.$store.dispatch('LoginModule/register', userData);
+      this.$store.dispatch('LoginModule/handleRegister', userData);
     },
     toggleForm() {
       this.isRegister = !this.isRegister; // 切換註冊和登入頁面
