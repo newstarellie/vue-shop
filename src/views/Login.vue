@@ -27,11 +27,14 @@
     </form>
     <div>
       <button @click="toggleForm">{{ isRegister ? '已有帳號？登入' : '還沒有帳號？註冊' }}</button>
+      <button @click="hashPassword">加密密碼</button>
     </div>
   </div>
 </template>
 
 <script>
+import bcrypt from 'bcryptjs';
+
 export default {
   name: 'LoginPage',
   data() {
@@ -42,6 +45,12 @@ export default {
     }
   },
   methods: {
+    async hashPassword() {
+      const saltRounds = 10;
+      const hashedPassword = await bcrypt.hash(this.password, saltRounds);
+      console.log('加密後的密碼:', hashedPassword);
+      return hashedPassword;
+    },
     handleSubmit() {
       if (this.isRegister) {
         this.register(); // 註冊動作
@@ -57,11 +66,11 @@ export default {
       this.$store.dispatch('LoginModule/login', this.username);
       this.$router.push('/');
     },
-    register() {
+    async register() {
       // 註冊邏輯
       console.log('註冊');
-      this.$router.push('/');
-      const userData = { username: this.username, password: this.password };
+      const hashedPassword = await this.hashPassword();
+      const userData = { username: this.username, password: hashedPassword };
       this.$store.dispatch('LoginModule/register', userData);
     },
     toggleForm() {
