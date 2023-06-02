@@ -1,4 +1,5 @@
 import { setDoc, doc } from "firebase/firestore";
+import { collection, query, where, getDocs } from 'firebase/firestore';
 import db from '@/firebase';
 import router from '@/router';
 
@@ -35,21 +36,35 @@ const actions = {
     dispatch('setUserDataToLocalStorage', userData);
     dispatch('saveUserDataToDatabase', userData);
   },
-
-  // todo 可以放入index.js 統一調用
   saveUserDataToDatabase({ commit }, payload) {
     console.log(commit);
-    const documentRef = doc(db, "accountList", payload.username);
+    router.push('/lazy-loading');
 
-    return setDoc(documentRef, { ...payload })
-      .then(() => {
-        console.log("會員資料已成功存儲");
-        // 轉跳回主頁面  
-        router.push('/');
+    const collectionRef = collection(db, 'accountList');
+    const queryRef = query(collectionRef, where('username', '==', payload.username));
+
+    return getDocs(queryRef)
+      .then((querySnapshot) => {
+        if (!querySnapshot.empty) {
+          return '帳號已存在，請使用其他帳號';
+        } else {
+          const documentRef = doc(collectionRef);
+          return setDoc(documentRef, { ...payload });
+        }
+      })
+      .then((result) => {
+        if (typeof result === 'string') {
+          console.log(result);
+          return Promise.reject(result);
+        } else {
+          console.log('會員資料已成功存儲');
+          router.push('/');
+        }
       })
       .catch((error) => {
-        console.error("儲存 會員資料時發生錯誤：", error);
-        throw error; // 將錯誤向上傳遞，以便在需要時處理
+        console.error('儲存會員資料時發生錯誤：', error);
+        router.push('/login');
+        return '儲存會員資料時發生錯誤';
       });
   },
   setUserDataToLocalStorage({ dispatch }, userData) {
