@@ -56,8 +56,11 @@ export default {
         this.login(); // 登入動作
       }
     },
-    login() {
-      this.$store.dispatch('LoginModule/login', this.username);
+    async login() {
+      const hashedPassword = await this.hashPassword();
+      const userData = { username: this.username, password: hashedPassword };
+
+      this.$store.dispatch('LoginModule/handleLogin', userData);
       this.$router.push('/');
     },
     async register() {

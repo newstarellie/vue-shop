@@ -14,13 +14,26 @@ const getters = {
 }
 
 const actions = {
-  login({ commit }, user) {
-    console.log(user)
-    // 登入邏輯
-    // 在這裡執行後端驗證等相關操作
-    // 登入成功後觸發 mutation
-    commit('SET_LOGIN_STATUS', true)
-    commit('SET_USER', user)
+  handleLogin({ commit, dispatch }, userData) {
+    return dispatch('checkPasswordFromDatabase', userData)
+      .then((result) => {
+        // todo 設定通知toast
+        console.log('返回結果：', result);
+        // 在這裡處理返回的結果
+        dispatch('setUserNameToLocalStorage', userData.username);
+        commit('SET_LOGIN_STATUS', true)
+        commit('SET_USER', userData.username)
+        router.push('/');
+      })
+      .catch((error) => {
+        console.error('登入錯誤', error);
+        router.push('/login');
+
+        // todo 設定通知toast
+        // 在這裡處理錯誤
+      });
+    // dispatch('setUserNameToLocalStorage', userData.username);
+
   },
   logout({ commit, dispatch }) {
     commit('SET_LOGIN_STATUS', false)
@@ -49,6 +62,35 @@ const actions = {
       });
     // dispatch('setUserNameToLocalStorage', userData.username);
 
+  },
+  checkPasswordFromDatabase({ commit }, userData) {
+    console.log(commit);
+    router.push('/lazy-loading');
+
+    const collectionRef = collection(db, 'accountList');
+    // todo  先看看有沒有這個帳號
+    // todo 寫法有錯 所以結果有錯
+    const queryRef1 = query(collectionRef, where('username', '==', userData.username));
+    const queryRef2 = query(collectionRef, where('password', '==', userData.password));
+    return Promise.all([getDocs(queryRef1), getDocs(queryRef2)])
+      .then(([querySnapshot1, querySnapshot2]) => {
+        if (!querySnapshot1.empty && !querySnapshot2.empty) {
+          return '密碼相同';
+        } else {
+          return '密碼不相同';
+        }
+      })
+      .then((result) => {
+        if (result === '密碼不相同') {
+          return Promise.reject(result);
+        } else {
+          return '登入成功';
+        }
+      })
+      .catch((error) => {
+        console.error('登入發生錯誤：', error);
+        return '登入發生錯誤：';
+      });
   },
   saveUserDataToDatabase({ commit }, payload) {
     console.log(commit);
