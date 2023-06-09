@@ -63,7 +63,7 @@ const actions = {
 // 定义 mutations 对象
 const mutations = {
   SET_CART_ITEM_DATA(state, data) {
-    state.cartItems = [...data];
+    state.cartItems = Array.from(data);
   },
   ADD_CART_ITEM(state, product) {
     let productWithQuantity = {
