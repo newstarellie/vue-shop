@@ -34,15 +34,25 @@ h1 {
 /* 表單樣式 */
 form {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 2em auto;
-  max-width: 300px;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+  // margin: 2em auto;
+  // max-width: 300px;
   background-color: #fff;
   padding: 1em;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+header {
+  background-color: $background-secondary-color;
+  padding: $padding-md;
+}
+
+footer {
+  background-color: #f0f0f0;
+  padding: $padding-md;
 }
 
 /* 標籤樣式 */
