@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Navbar class="navbar"></Navbar>
+    <Header></Header>
 
     <main>
       <router-view></router-view>
@@ -13,12 +14,14 @@
 </template>
 
 <script>
-import Navbar from './components/Navbar.vue'
+import Navbar from './components/Navbar.vue';
+import Header from './components/Header.vue';
 
 export default {
   name: 'App',
   components: {
-    Navbar
+    Navbar,
+    Header
   },
   computed: {
   },
