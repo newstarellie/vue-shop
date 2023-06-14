@@ -2,10 +2,16 @@
   <header>
     <h1 class="mallLogo">
       <a href="#"
-        title="母婴商城">
-        <img src="res/static/img/logo.png">
+        @mouseover="handleMouseOver"
+        @mouseout="handleMouseOut"
+        title="買買買商城">
+        <img :src="logoIsHovered ? hoverImageUrl : defaultImageUrl"
+          alt="買買買商城logo" />
+        <span>買買買商城</span>
+
       </a>
     </h1>
+
     <div class="mallSearch">
       <form action=""
         novalidate>
@@ -27,8 +33,26 @@
 
 <script>
 
+
 export default {
   name: 'HeaderComponent',
+  data() {
+    return {
+      logoIsHovered: false,
+      defaultImageUrl: require('@/assets/mall-logo-default.svg'),
+      hoverImageUrl: require('@/assets/mall-logo-hover.svg'),
+
+    };
+  },
+  methods: {
+    handleMouseOver() {
+      this.logoIsHovered = true;
+      console.log(this.logoIsHovered)
+    },
+    handleMouseOut() {
+      this.logoIsHovered = false;
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -37,6 +61,24 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
+}
+
+h1.mallLogo {
+  min-width: 100px;
+  max-width: 500px;
+
+  min-height: 50px;
+  max-height: 100px;
+
+  a {
+    display: flex;
+    height: 100%;
+
+    img {
+      height: 50px;
+    }
+  }
+
 }
 
 .mallSearch {
