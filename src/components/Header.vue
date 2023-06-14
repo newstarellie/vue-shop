@@ -14,10 +14,12 @@
           required
           autocomplete="off"
           placeholder="请输入需要的商品">
+
         <button type="submit">
-          <i class="layui-icon layui-icon-search"></i>
-          搜尋
+          <span class="sr-only">搜尋</span>
+          <i class="fa-solid fa-magnifying-glass"></i>
         </button>
+
       </form>
     </div>
   </header>
@@ -56,8 +58,19 @@ header {
 
     button {
       height: 100%;
-      text-indent: -9999px;
-      overflow: hidden;
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
     }
   }
 }
