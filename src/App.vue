@@ -4,7 +4,10 @@
     <Header></Header>
 
     <main>
+
+      <!-- 下面兩個要切換 -->
       <router-view></router-view>
+      <ContentNavbar></ContentNavbar>
     </main>
 
     <footer>
@@ -15,13 +18,15 @@
 
 <script>
 import Navbar from './components/Navbar.vue';
+import ContentNavbar from './components/Content-Navbar.vue';
 import Header from './components/Header.vue';
 
 export default {
   name: 'App',
   components: {
     Navbar,
-    Header
+    Header,
+    ContentNavbar
   },
   computed: {
   },
