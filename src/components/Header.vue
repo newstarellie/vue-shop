@@ -16,6 +16,7 @@
           placeholder="请输入需要的商品">
         <button type="submit">
           <i class="layui-icon layui-icon-search"></i>
+          搜尋
         </button>
       </form>
     </div>
@@ -31,22 +32,33 @@ export default {
 <style lang="scss" scoped>
 header {
   display: flex;
-
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
 }
 
 .mallSearch {
   width: 500px;
-  padding-top: 30px;
 
+  // todo 這些可以整理進去scss模組 
   form {
-    width: 100%;
-    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    border: $input-border-color 1px solid;
 
     input {
       width: 100%;
+      background-color: $input-background-color;
+      text-align: left;
+
     }
 
-
+    button {
+      height: 100%;
+      text-indent: -9999px;
+      overflow: hidden;
+    }
   }
 }
 </style>
