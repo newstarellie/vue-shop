@@ -58,6 +58,17 @@ export default {
 </script>
 
 <style lang="scss">
+.left-nav {
+  min-width: 150px;
+  width: 20%;
+  border: $secondary-color 2px solid;
+  background-color: $tertiary-color;
+
+  .title {
+    background-color: $secondary-color;
+  }
+}
+
 dl.accordion dt {
   cursor: pointer;
 }
