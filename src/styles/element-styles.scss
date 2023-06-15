@@ -82,6 +82,10 @@ button {
   border-radius: 5px;
   font-size: 1.2em;
   cursor: pointer;
+
+  &:hover {
+    background-color: $primary-color;
+  }
 }
 
 p {
@@ -108,8 +112,8 @@ i {
 a {
   text-decoration: none;
   color: $text-color;
-}
 
-*:hover {
-  color: $text-color-hover;
+  &:hover {
+    color: $text-color-hover;
+  }
 }
