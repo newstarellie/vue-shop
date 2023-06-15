@@ -12,6 +12,8 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 h1,
@@ -117,3 +119,9 @@ a {
     color: $text-color-hover;
   }
 }
+
+li {
+  list-style-type: none;
+}
+
+dl {}

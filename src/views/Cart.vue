@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <h1>購物車</h1>
     <div v-if="!cartIsEmpty">
       <cartItemList :inCartProductsList="inCartProductsList"></cartItemList>
       <p>總金額: {{ totalCartAmount }}</p>
