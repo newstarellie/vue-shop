@@ -84,7 +84,7 @@ h1.mallLogo {
 .mallSearch {
   width: 500px;
 
-  // todo 這些可以整理進去scss模組 
+  // TODO 這些可以整理進去scss模組 
   form {
     justify-content: space-between;
     align-items: center;

@@ -2,6 +2,7 @@
   <div id="app">
     <Navbar class="navbar"></Navbar>
     <Header></Header>
+    <ContentNavbar></ContentNavbar>
 
     <main>
       <router-view></router-view>
@@ -15,13 +16,15 @@
 
 <script>
 import Navbar from './components/Navbar.vue';
+import ContentNavbar from './components/Content-Navbar.vue';
 import Header from './components/Header.vue';
 
 export default {
   name: 'App',
   components: {
     Navbar,
-    Header
+    Header,
+    ContentNavbar
   },
   computed: {
   },
@@ -32,14 +35,15 @@ export default {
 <style lang="scss">
 #app {
   background-color: $primary-color;
-  height: 100%;
   display: flex;
+  min-height: 100%;
   flex-direction: column;
 }
 
 
 main {
   flex: 1;
+  margin: 1rem;
 }
 
 footer {

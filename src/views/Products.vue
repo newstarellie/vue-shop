@@ -1,18 +1,21 @@
 <template>
-  <div class="home">
-    <h1>商品列表</h1>
+  <div class="ProductsPage">
+    <ProductsLeftNav></ProductsLeftNav>
+
     <ProductList :ProductList="productsList"></ProductList>
   </div>
 </template>
 
 <script>
 import ProductList from '@/components/products/ProductList.vue'
+import ProductsLeftNav from '@/components/products/ProductsLeftNav.vue'
 
 
 export default {
   name: 'ProductsPage',
   components: {
-    ProductList
+    ProductList,
+    ProductsLeftNav
   },
   data() {
     return {
@@ -33,3 +36,8 @@ export default {
 };
 </script>
 
+<style lang="scss">
+.ProductsPage {
+  display: flex;
+}
+</style>

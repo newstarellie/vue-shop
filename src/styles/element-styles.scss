@@ -2,6 +2,7 @@
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
 }
 
 html,
@@ -12,6 +13,8 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 h1,
@@ -82,6 +85,10 @@ button {
   border-radius: 5px;
   font-size: 1.2em;
   cursor: pointer;
+
+  &:hover {
+    background-color: $primary-color;
+  }
 }
 
 p {
@@ -108,8 +115,35 @@ i {
 a {
   text-decoration: none;
   color: $text-color;
+
+  &:hover {
+    color: $text-color-hover;
+  }
 }
 
-*:hover {
-  color: $text-color-hover;
+li {
+  list-style-type: none;
+}
+
+dl {
+  display: block;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  text-align: left;
+  cursor: pointer;
+
+  dt {
+    &::before {
+      content: "\f007"; // 使用 Unicode 或 Font Awesome 的类名来设置图标内容
+      font-family: "Font Awesome"; // 如果使用 Font Awesome 图标库，需要设置正确的字体名称
+      margin-right: 5px; // 调整图标与文本之间的间距
+    }
+
+  }
+
+  dd:hover {
+    color: $text-color-hover;
+  }
+
+
 }
