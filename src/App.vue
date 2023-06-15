@@ -2,9 +2,9 @@
   <div id="app">
     <Navbar class="navbar"></Navbar>
     <Header></Header>
+    <ContentNavbar></ContentNavbar>
 
     <main>
-      <ContentNavbar></ContentNavbar>
       <router-view></router-view>
     </main>
 
@@ -43,6 +43,7 @@ export default {
 
 main {
   flex: 1;
+  margin: 1rem;
 }
 
 footer {

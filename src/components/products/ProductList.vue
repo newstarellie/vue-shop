@@ -1,10 +1,9 @@
 <template>
-  <ul>
-    <ProductItem
+  <ul class="ProductList">
+    <ProductItem class="ProductItem"
       v-for="ProductItem in ProductList"
       :key="ProductItem.productId"
-      :ProductItemInform="ProductItem"
-    >
+      :ProductItemInform="ProductItem">
     </ProductItem>
   </ul>
 </template>
@@ -28,4 +27,13 @@ export default {
   },
 };
 </script>
+<style lang="scss">
+.ProductList {
+  display: flex;
+
+  .ProductItem {
+    margin: 10px;
+  }
+}
+</style>
 
