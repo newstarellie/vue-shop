@@ -3,19 +3,11 @@
   <nav>
     <ul class="nav-list">
       <li>
-        <router-link to="/">
-          首頁
-        </router-link>
-      </li>
-      <div class="right-align"></div>
-      <li>
-        <router-link to="/products">Products</router-link>
+
+        <router-link to="/products">所有商品</router-link>
       </li>
       <li>
-        <router-link to="/cart">购物车</router-link>
-      </li>
-      <li>
-        <router-link to="/login">登录</router-link>
+        <router-link to="/aboutUs">關於我們</router-link>
       </li>
     </ul>
   </nav>
@@ -30,7 +22,7 @@ export default {
 <style scoped>
 .nav-list {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .right-align {

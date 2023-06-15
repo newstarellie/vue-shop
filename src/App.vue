@@ -4,10 +4,8 @@
     <Header></Header>
 
     <main>
-
-      <!-- 下面兩個要切換 -->
-      <router-view></router-view>
       <ContentNavbar></ContentNavbar>
+      <router-view></router-view>
     </main>
 
     <footer>
