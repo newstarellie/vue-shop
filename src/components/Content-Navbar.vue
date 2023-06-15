@@ -19,10 +19,13 @@ export default {
   name: 'NavbarComponent',
 };
 </script>
-<style scoped>
+<style scoped lang="scss">
 .nav-list {
   display: flex;
   justify-content: flex-start;
+  background-color: $tertiary-color;
+  padding: 0.5rem 1rem;
+
 }
 
 .right-align {
