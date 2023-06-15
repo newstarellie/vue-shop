@@ -36,6 +36,7 @@ export default {
 #app {
   background-color: $primary-color;
   display: flex;
+  min-height: 100%;
   flex-direction: column;
 }
 

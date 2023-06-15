@@ -2,6 +2,7 @@
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
 }
 
 html,
@@ -124,4 +125,18 @@ li {
   list-style-type: none;
 }
 
-dl {}
+dl {
+  display: block;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  text-align: left;
+  cursor: pointer;
+
+  dt {
+    &::before {
+      content: "\f007"; // 使用 Unicode 或 Font Awesome 的类名来设置图标内容
+      font-family: "Font Awesome"; // 如果使用 Font Awesome 图标库，需要设置正确的字体名称
+      margin-right: 5px; // 调整图标与文本之间的间距
+    }
+  }
+}
