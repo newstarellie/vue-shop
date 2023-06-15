@@ -139,4 +139,8 @@ dl {
       margin-right: 5px; // 调整图标与文本之间的间距
     }
   }
+
+  &:hover {
+    color: $text-color-hover;
+  }
 }
