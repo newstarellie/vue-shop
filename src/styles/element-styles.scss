@@ -138,9 +138,12 @@ dl {
       font-family: "Font Awesome"; // 如果使用 Font Awesome 图标库，需要设置正确的字体名称
       margin-right: 5px; // 调整图标与文本之间的间距
     }
+
   }
 
-  &:hover {
+  dd:hover {
     color: $text-color-hover;
   }
+
+
 }
