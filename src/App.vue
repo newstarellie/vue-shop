@@ -37,6 +37,7 @@ export default {
   background-color: $primary-color;
   display: flex;
   min-height: 100%;
+  height: 100%;
   flex-direction: column;
 }
 
@@ -48,13 +49,5 @@ main {
 
 footer {
   flex-shrink: 0;
-}
-
-.navbar {
-  // background-color: red;
-
-  ul {
-    // padding: 50px;
-  }
 }
 </style>
