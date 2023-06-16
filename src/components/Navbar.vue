@@ -8,10 +8,10 @@
       </li>
       <div class="right-align"></div>
       <li>
-        <router-link to="/cart">购物车</router-link>
+        <router-link to="/cart">購物車</router-link>
       </li>
       <li>
-        <router-link to="/login">登录</router-link>
+        <router-link to="/login">登入</router-link>
       </li>
     </ul>
   </nav>
