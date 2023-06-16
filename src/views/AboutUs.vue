@@ -7,10 +7,11 @@
       <slide v-for="slide in bannerList"
         :key="slide">
         <div class="slide-content">
-          {{ slide }}
           <img :src="slide.path"
-            alt="">
+            alt="slide-picture"
+            style="height: 100%; object-fit: cover;">
         </div>
+
       </slide>
 
       <template #addons>
@@ -26,8 +27,10 @@ import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 // import banner1 from '@/assets/home/banner1';
 // import { banner1 } from "@/assets/home/";
-import banner1 from '../assets/home/banner1.jpg';
+// import banner1 from '../assets/home/banner1.jpg';
 import banner2 from '../assets/home/banner2.png';
+import banner3 from '../assets/home/banner3.jpg';
+
 
 
 export default {
@@ -41,16 +44,20 @@ export default {
   data() {
     return {
       bannerList: [
-        {
-          path: banner1,
-          index: 1,
-          width: '200px',
+        // {
+        //   path: banner1,
+        //   index: 1,
+        //   width: '200px',
 
-        },
+        // },
         {
           path: banner2,
           index: 2,
-        }
+        },
+        {
+          path: banner3,
+          index: 3,
+        },
       ]
     }
   },
@@ -66,12 +73,12 @@ export default {
 </script>
 <style scoped>
 .slide-content {
-  height: 100px;
-  width: 100px;
+  height: 60vh;
+  width: 100%;
   background-color: #eee;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 24px;
+
 }
 </style>
