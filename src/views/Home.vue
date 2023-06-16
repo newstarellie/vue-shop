@@ -6,10 +6,12 @@
       :transition="2000"
       :infinite="true"
       :autoplay="true">
-      <slide v-for="slide in 3"
+      <slide v-for="slide in bannerList"
         :key="slide">
         <div class="slide-content">
           {{ slide }}
+          <img :src="slide.path"
+            alt="">
         </div>
       </slide>
 
@@ -24,6 +26,11 @@
 <script>
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
+// import banner1 from '@/assets/home/banner1';
+// import { banner1 } from "@/assets/home/";
+import banner1 from '../assets/home/banner1.jpg';
+import banner2 from '../assets/home/banner2.png';
+
 
 export default {
   name: 'HomePage',
@@ -32,6 +39,22 @@ export default {
     Slide,
     Pagination,
     Navigation,
+  },
+  data() {
+    return {
+      bannerList: [
+        {
+          path: banner1,
+          index: 1,
+          width: '200px',
+
+        },
+        {
+          path: banner2,
+          index: 2,
+        }
+      ]
+    }
   },
   created() {
 
