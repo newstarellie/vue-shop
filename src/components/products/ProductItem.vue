@@ -1,13 +1,11 @@
 <template>
-  <li>
-    <img
-      :src="ProductItemInform.productImage"
-      :alt="ProductItemInform.productName"
-    />
-    <div>
-      <h3>{{ ProductItemInform.productName }}</h3>
-      <p>{{ ProductItemInform.productDescription }}</p>
-      <p>價格: {{ ProductItemInform.productPrice }} 元</p>
+  <li class="product-item">
+    <img :src="ProductItemInform.productImage"
+      :alt="ProductItemInform.productName" />
+    <div class="product-item-inform">
+      <p>{{ ProductItemInform.productName }}</p>
+      <!-- <p>{{ ProductItemInform.productDescription }}</p> -->
+      <p>{{ ProductItemInform.productPrice }} 元</p>
     </div>
     <button @click="addToCart(ProductItemInform)">加入購物車</button>
   </li>
@@ -38,4 +36,20 @@ export default {
   }
 };
 </script>
+<style scope lang="scss" >
+.product-item {
+  button {
+    width: 100%;
+  }
+}
+
+.product-item-inform {
+  display: flex;
+  justify-content: space-between;
+
+  p {
+    margin: 5px;
+  }
+}
+</style>
 

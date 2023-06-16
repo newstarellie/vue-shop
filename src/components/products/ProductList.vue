@@ -30,6 +30,10 @@ export default {
 <style lang="scss">
 .ProductList {
   display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: start;
+  margin-left: 20px;
 
   .ProductItem {
     margin: 10px;
