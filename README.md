@@ -1,27 +1,9 @@
 # vue-shop
+![Untitled](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0f06149a-8b15-4e8a-a4a4-1617b2c8fb26%2FUntitled.png?table=block&id=a79c0849-d804-4cf4-a935-888bddbba019&spaceId=e70f6caa-7087-4650-854c-63d693735947&width=1750&userId=6c0f12f6-7831-4139-9bbc-b283b585e57b&cache=v2)
 
-## Project setup
-```
-npm install
-```
+# 專案網站連結
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- [vue-shop](https://vue-shop-dev.netlify.app/)
 
 
 # 專案目標：
