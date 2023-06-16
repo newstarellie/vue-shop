@@ -86,23 +86,35 @@ export default {
   }
 }
 
-dl.accordion dt {
-  cursor: pointer;
-}
+dl {
+  &.accordion dd {
+    display: none;
+    transition: height 0.3s;
+    overflow: hidden;
+    height: 0;
+  }
 
-dl.accordion dd {
-  display: none;
-  transition: height 0.3s;
-  overflow: hidden;
-  height: 0;
-}
+  &.accordion.open dd {
+    display: block;
+    height: auto;
+  }
 
-dl.accordion.open dd {
-  display: block;
-  height: auto;
-}
+  dt {
 
-.selected {
-  color: red; // 设置选中项的文字颜色
+    // TODO 開啟LIST之後 要更改成 - 的圖示
+    &::before {
+      content: ""; // 清空默认内容
+      background-image: url('@/assets/more.png');
+      background-size: cover; // 根据需要调整图像的大小
+      display: inline-block;
+      width: 15px; // 根据需要调整图像的宽度
+      height: 15px; // 根据需要调整图像的高度
+      margin: 0 5px; // 调整图像与文本之间的间距
+    }
+  }
+
+  .selected {
+    color: $secondary-color; // 设置选中项的文字颜色
+  }
 }
 </style>

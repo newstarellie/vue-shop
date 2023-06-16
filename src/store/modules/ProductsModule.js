@@ -1,3 +1,7 @@
+// import product1 from "src/assets/product-1.jpg";
+import product1 from "@/assets/product-1.jpg";
+import product2 from "@/assets/product-2.jpg";
+import product3 from "@/assets/product-3.jpg";
 
 
 // 定义状态对象
@@ -9,7 +13,7 @@ const state = {
       productDescription: '一個很棒的產品',
       productPrice: 100,
       productInventory: 10,
-      productImage: 'https://fakeimg.pl/100x30/'
+      productImage: product1
     },
     {
       productId: 2,
@@ -17,7 +21,7 @@ const state = {
       productDescription: '一個很棒的產品',
       productPrice: 100,
       productInventory: 10,
-      productImage: 'https://fakeimg.pl/100x30/'
+      productImage: product2
     },
     {
       productId: 3,
@@ -25,7 +29,7 @@ const state = {
       productDescription: '一個很棒的產品',
       productPrice: 100,
       productInventory: 10,
-      productImage: 'https://fakeimg.pl/100x30/'
+      productImage: product3
     },
   ],
 };
