@@ -15,6 +15,7 @@ body {
   padding: 0;
   -webkit-user-select: none;
   user-select: none;
+  background-color: $primary-color;
 }
 
 h1,
@@ -37,12 +38,6 @@ h1 {
 /* 表單樣式 */
 form {
   display: flex;
-  // flex-direction: column;
-  // justify-content: center;
-  // align-items: center;
-  // margin: 2em auto;
-  // max-width: 300px;
-  background-color: #fff;
   padding: 1em;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -95,7 +90,7 @@ p {
   margin: 0;
 }
 
-nav ul {
+ul {
   display: flex;
   list-style: none;
   justify-content: center;
@@ -134,11 +129,8 @@ dl {
 
   dt {
     &::before {
-      content: "\f007"; // 使用 Unicode 或 Font Awesome 的类名来设置图标内容
-      font-family: "Font Awesome"; // 如果使用 Font Awesome 图标库，需要设置正确的字体名称
-      margin-right: 5px; // 调整图标与文本之间的间距
+      margin-right: 5px;
     }
-
   }
 
   dd:hover {
