@@ -8,7 +8,16 @@ import router from './router/index.js';
 import Toast, { POSITION, useToast } from "vue-toastification";
 import "vue-toastification/dist/index.css";
 
+// Vuetify
+import 'vuetify/styles';
+import { createVuetify } from 'vuetify';
+import * as components from 'vuetify/components';
+import * as directives from 'vuetify/directives';
 
+const vuetify = createVuetify({
+  components,
+  directives,
+})
 
 
 
@@ -24,6 +33,7 @@ app.use(Toast, {
   timeout: 1000,
   position: POSITION.TOP_CENTER
 });
+app.use(vuetify);
 app.config.globalProperties.$toast = useToast();
 
 
