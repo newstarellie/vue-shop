@@ -7,13 +7,11 @@
     <main>
       <router-view></router-view>
     </main>
-    <!-- <button @click="myMethod">觸發提示</button> -->
-    <button @click="showSuccessToast">Show Success Toast</button>
-
 
     <footer>
       <p>&copy; 2023 My E-commerce Website. All rights reserved.</p>
     </footer>
+
   </div>
 </template>
 
@@ -32,11 +30,7 @@ export default {
   computed: {
   },
   methods: {
-    showSuccessToast() {
-      this.$toast.success("My toast content", {
-        timeout: 2000
-      });
-    }
+
   },
 }
 </script>
