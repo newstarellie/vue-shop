@@ -22,6 +22,7 @@ export default {
   },
   methods: {
     addToCart(ProductItemInform) {
+      this.$toast.success("加入成功");
       return this.$store.dispatch('addToCart', ProductItemInform);
     },
   },

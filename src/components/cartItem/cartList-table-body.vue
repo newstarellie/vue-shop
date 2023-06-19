@@ -43,6 +43,7 @@ export default {
       return dataItem.productPrice * dataItem.quantity;
     },
     removeCartItem(product) {
+      this.$toast.success("移除成功");
       this.$store.dispatch('removeCartItem', product);
     },
     handleItemQuantityChange(newValue, product) {

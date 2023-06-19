@@ -11,6 +11,7 @@
     <footer>
       <p>&copy; 2023 My E-commerce Website. All rights reserved.</p>
     </footer>
+
   </div>
 </template>
 
@@ -28,7 +29,9 @@ export default {
   },
   computed: {
   },
+  methods: {
 
+  },
 }
 </script>
 
