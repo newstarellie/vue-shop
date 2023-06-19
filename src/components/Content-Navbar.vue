@@ -7,7 +7,7 @@
         <router-link to="/products">所有商品</router-link>
       </li>
       <li>
-        <router-link to="/aboutUs">關於我們</router-link>
+        <router-link to="/">關於我們</router-link>
       </li>
     </ul>
   </nav>

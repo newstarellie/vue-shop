@@ -2,7 +2,7 @@
   <nav>
     <ul class="nav-list">
       <li>
-        <router-link to="/aboutUs">
+        <router-link to="/">
           首頁
         </router-link>
       </li>
