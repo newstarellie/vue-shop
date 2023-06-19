@@ -1,13 +1,11 @@
 <template>
-  <div class="home">
-    <div v-if="!cartIsEmpty">
-      <cartItemList :inCartProductsList="inCartProductsList"></cartItemList>
-      <p>總金額: {{ totalCartAmount }}</p>
-      <button @click="clearCart">清空購物車</button>
-      <button @click="checkout">結帳</button>
-    </div>
-    <p v-else>購物車是空的</p>
+  <div v-if="!cartIsEmpty">
+    <cartItemList :inCartProductsList="inCartProductsList"></cartItemList>
+    <p>總金額: {{ totalCartAmount }}</p>
+    <button @click="clearCart">清空購物車</button>
+    <button @click="checkout">結帳</button>
   </div>
+  <p v-else>購物車是空的</p>
 </template>
 
 <script>
