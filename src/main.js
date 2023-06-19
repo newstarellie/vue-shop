@@ -5,10 +5,10 @@ import router from './router/index.js';
 
 // vue-toastification 設定
 // https://www.npmjs.com/package/@brackets/vue-toastification
-import Toast, { POSITION } from "vue-toastification";
+import Toast, { POSITION, useToast } from "vue-toastification";
 import "vue-toastification/dist/index.css";
-import { toastSetup } from './toastSetup.js';
-const { toast } = toastSetup();
+
+
 
 
 
@@ -24,7 +24,7 @@ app.use(Toast, {
   timeout: 1000,
   position: POSITION.TOP_CENTER
 });
-app.config.globalProperties.$toast = toast;
+app.config.globalProperties.$toast = useToast();
 
 
 app.mount('#app')
