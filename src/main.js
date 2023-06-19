@@ -21,6 +21,7 @@ app.use(router);
 // app.use(Toast);
 app.use(Toast, {
   // Setting the global default position
+  timeout: 1000,
   position: POSITION.TOP_CENTER
 });
 app.config.globalProperties.$toast = toast;
