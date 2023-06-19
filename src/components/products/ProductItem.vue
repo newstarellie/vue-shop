@@ -2,6 +2,7 @@
   <li class="product-item">
     <img :src="ProductItemInform.productImage"
       :alt="ProductItemInform.productName" />
+    {{ ProductItemInform.productImage }}
     <div class="product-item-inform">
       <p>{{ ProductItemInform.productName }}</p>
       <!-- <p>{{ ProductItemInform.productDescription }}</p> -->
@@ -23,14 +24,9 @@ export default {
   methods: {
     addToCart(ProductItemInform) {
       this.$toast.success("加入成功");
+      console.log(this.ProductItemInform)
       return this.$store.dispatch('addToCart', ProductItemInform);
     },
-  },
-  computed: {
-    productsList() {
-      return this.$store.state.CartModule.cartItems;
-    },
-
   },
   created() {
     this.$store.dispatch('getCartItemFromLocalStorage');
