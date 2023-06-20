@@ -28,8 +28,4 @@ export default {
   display: flex;
   justify-content: flex-end;
 }
-
-.right-align {
-  margin-left: auto;
-}
 </style>
