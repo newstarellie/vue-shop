@@ -2,7 +2,6 @@
   <li class="product-item">
     <img :src="ProductItemInform.productImage"
       :alt="ProductItemInform.productName" />
-    {{ ProductItemInform.productImage }}
     <div class="product-item-inform">
       <p>{{ ProductItemInform.productName }}</p>
       <!-- <p>{{ ProductItemInform.productDescription }}</p> -->

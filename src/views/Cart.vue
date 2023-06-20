@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="container">
     <div v-if="!cartIsEmpty">
       <cartItemList :inCartProductsList="inCartProductsList"></cartItemList>
       <p>總金額: {{ totalCartAmount }}</p>
@@ -35,6 +35,8 @@ export default {
   },
   methods: {
     clearCart() {
+      this.$toast.success("全部移除成功");
+
       this.$store.dispatch('clearCartItems');
     },
     checkout() {
