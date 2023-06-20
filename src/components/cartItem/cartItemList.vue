@@ -29,4 +29,12 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+tr {
+  border-bottom: 1px solid $border-color;
+}
 
+thead {
+  height: 50px;
+}
+</style>

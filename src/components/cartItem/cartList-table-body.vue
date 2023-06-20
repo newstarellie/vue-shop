@@ -3,6 +3,8 @@
   <tbody>
     <tr v-for="dataItem in dataList"
       :key="dataItem.id">
+      <tableTd :dataForm="'img'"
+        :data="dataItem.productImage"></tableTd>
       <tableTd :dataForm="'text'"
         :data="dataItem.productName"></tableTd>
       <tableTd :dataForm="'text'"
@@ -64,3 +66,9 @@ export default {
 };
 </script>
 
+<style lang="scss">
+td {
+  height: 100px;
+
+}
+</style>

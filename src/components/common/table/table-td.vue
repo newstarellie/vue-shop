@@ -16,6 +16,11 @@
       {{ data }}
     </button>
   </td>
+
+  <td v-else-if="dataForm == 'img'">
+    <img :src="data"
+      alt="data">
+  </td>
 </template>
 
 <script>
@@ -41,4 +46,13 @@ export default {
   },
 };
 </script>
+<style lang="scss" scope>
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
 
+input {
+  width: 100%;
+}
+</style>

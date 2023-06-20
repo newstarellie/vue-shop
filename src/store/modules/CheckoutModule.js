@@ -8,11 +8,12 @@ import store from '@/store/index';
 const state = {
   checkoutStatus: false,
   tableColumn: [
-    { columnName: 'product', label: '商品', width: '100px' },
-    { columnName: 'price', label: '價格', width: '80px' },
-    { columnName: 'quantity', label: '數量', width: '80px' },
-    { columnName: 'total', label: '小計', width: '100px' },
-    { columnName: 'action', label: '操作', width: '200px' }
+    { columnName: 'product-img', label: '商品', width: '15%' },
+    { columnName: 'product', label: '', width: '15%' },
+    { columnName: 'price', label: '價格', width: '15%' },
+    { columnName: 'quantity', label: '數量', width: '15%' },
+    { columnName: 'total', label: '小計', width: '15%' },
+    { columnName: 'action', label: '操作', width: '15%' }
   ]
 };
 

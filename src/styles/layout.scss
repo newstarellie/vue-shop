@@ -7,9 +7,14 @@
 .row {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .column {
   flex: 1;
   padding: 10px;
+}
+
+.right-align {
+  margin-left: auto;
 }

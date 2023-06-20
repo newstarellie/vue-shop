@@ -1,12 +1,17 @@
 <template>
-  <div class="home">
+  <div class="container">
     <div v-if="!cartIsEmpty">
       <cartItemList :inCartProductsList="inCartProductsList"></cartItemList>
-      <p>總金額: {{ totalCartAmount }}</p>
-      <button @click="clearCart">清空購物車</button>
-      <button @click="checkout">結帳</button>
+
+      <div class="row">
+
+        <button @click="clearCart">清空購物車</button>
+        <div class="right-align"></div>
+        <h3>總金額: {{ totalCartAmount }}元</h3>
+        <button @click="checkout">結帳</button>
+      </div>
     </div>
-    <p v-else>購物車是空的</p>
+    <h3 v-else>購物車是空的</h3>
   </div>
 </template>
 
@@ -35,6 +40,8 @@ export default {
   },
   methods: {
     clearCart() {
+      this.$toast.success("全部移除成功");
+
       this.$store.dispatch('clearCartItems');
     },
     checkout() {
@@ -46,4 +53,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+button {
+  margin: $margin-sm;
+}
+</style>
