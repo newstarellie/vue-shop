@@ -1,9 +1,12 @@
 <template>
-  <div>
-    <h2>結帳頁面</h2>
+  <div class="container checkout">
+    <h2>填寫訂單資訊</h2>
     <cartItemList :inCartProductsList="inCartProductsList"></cartItemList>
-    <button @click="backToCart">回購物車</button>
-    <p>總金額: {{ totalCartAmount }}</p>
+    <div class="row w50">
+      <button @click="backToCart">回購物車</button>
+      <div class="right-align"></div>
+      <h3>總金額: {{ totalCartAmount }}</h3>
+    </div>
     <form @submit.prevent="submitOrder">
       <label for="order-number">訂單編號</label>
       <input type="text"
@@ -38,11 +41,9 @@
         <option value="credit-card">信用卡</option>
         <option value="paypal">PayPal</option>
       </select>
-      <button type="submit">確認結帳</button>
+      <button type="submit">送出資料</button>
     </form>
 
-    <!-- 測試用 -->
-    <!-- <button @click="submitOrder">{{ fhdusi }}</button> -->
   </div>
 </template>
 
@@ -111,3 +112,35 @@ export default {
   },
 }
 </script>
+<style lang="scss" scope>
+.checkout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  form {
+    flex-direction: column;
+    width: 50%;
+    margin: 10px auto;
+
+    label {
+      text-align: start;
+      margin: $margin-sm 0;
+    }
+
+    input,
+    select {
+      text-align: start;
+
+    }
+
+    button {
+      margin-top: 20px;
+    }
+  }
+
+  button {
+    margin: $margin-sm 0;
+  }
+}
+</style>
