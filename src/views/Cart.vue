@@ -7,11 +7,11 @@
 
         <button @click="clearCart">清空購物車</button>
         <div class="right-align"></div>
-        <p>總金額: {{ totalCartAmount }}元</p>
+        <h3>總金額: {{ totalCartAmount }}元</h3>
         <button @click="checkout">結帳</button>
       </div>
     </div>
-    <p v-else>購物車是空的</p>
+    <h3 v-else>購物車是空的</h3>
   </div>
 </template>
 
