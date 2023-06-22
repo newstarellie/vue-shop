@@ -4,7 +4,7 @@ import Cart from '../views/Cart.vue'
 import Contact from '../views/Contact.vue'
 import Checkout from '../views/Checkout.vue'
 import aboutUs from '../views/AboutUs.vue'
-import LoadingSpinner from '../views/LoadingSpinner.vue'
+import LoadingSpinner from '../views/LoadingSpinnerPage.vue'
 
 
 

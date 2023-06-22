@@ -5,7 +5,7 @@
 <script>
 
 export default {
-  name: 'LazyLoading',
+  name: 'LoadingSpinner',
 
 };
 </script>
