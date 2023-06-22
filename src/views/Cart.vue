@@ -11,7 +11,11 @@
         <button @click="checkout">結帳</button>
       </div>
     </div>
-    <h3 v-else>購物車是空的</h3>
+    <div v-else
+      class="empty-notice">
+      <h3>購物車是空的</h3>
+      <router-link to="/products">去看看商品</router-link>
+    </div>
   </div>
 </template>
 

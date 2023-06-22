@@ -118,6 +118,7 @@ export default {
   flex-direction: column;
   align-items: center;
 
+  // TODO 變成常用元件
   form {
     flex-direction: column;
     width: 50%;

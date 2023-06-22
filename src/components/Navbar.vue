@@ -10,9 +10,21 @@
       <li>
         <router-link to="/cart">購物車</router-link>
       </li>
-      <li>
-        <router-link to="/login">登入</router-link>
+      <!-- 顯示登入狀態的區域 -->
+      <li v-if="isLogged">
+        歡迎{{ username }}
+        <a @click="logout">登出</a>
       </li>
+
+      <div class="row"
+        v-else>
+        <li>
+          <a @click="toRegisterPage(true)">註冊</a>
+        </li>
+        <li>
+          <a @click="toRegisterPage(false)">登入</a>
+        </li>
+      </div>
     </ul>
   </nav>
 </template>
@@ -21,6 +33,25 @@
 
 export default {
   name: 'NavbarComponent',
+  created() {
+    this.$store.dispatch('LoginModule/getUserDataToLocalStorage')
+  },
+  computed: {
+    isLogged() {
+      return this.$store.state.LoginModule.isLoggedIn;
+    },
+    username() {
+      return this.$store.state.LoginModule.user;
+    }
+  },
+  methods: {
+    toRegisterPage(status) {
+      this.$store.dispatch('LoginModule/setRegisterStatus', { router: this.$router, status: status });
+    },
+    logout() {
+      this.$store.dispatch('LoginModule/logout');
+    }
+  },
 };
 </script>
 <style scoped>
