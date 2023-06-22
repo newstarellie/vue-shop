@@ -4,7 +4,7 @@ import Cart from '../views/Cart.vue'
 import Contact from '../views/Contact.vue'
 import Checkout from '../views/Checkout.vue'
 import aboutUs from '../views/AboutUs.vue'
-import LazyLoading from '../views/LazyLoading.vue'
+import LoadingSpinner from '../views/LoadingSpinnerPage.vue'
 
 
 
@@ -35,9 +35,9 @@ const routes = [
     component: Contact,
   },
   {
-    path: '/lazy-loading',
-    name: 'LazyLoading',
-    component: LazyLoading,
+    path: '/loadingSpinner',
+    name: 'LoadingSpinner',
+    component: LoadingSpinner,
   },
 ];
 
