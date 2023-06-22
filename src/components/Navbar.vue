@@ -10,21 +10,22 @@
       <li>
         <router-link to="/cart">購物車</router-link>
       </li>
-      <li>
-        <router-link to="/login">登入</router-link>
-      </li>
-      <li>
-        <router-link to="/login">Login</router-link>
-      </li>
-
       <!-- 顯示登入狀態的區域 -->
       <li v-if="isLogged">
         歡迎{{ username }}
         <a @click="logout">登出</a>
       </li>
-      <li v-else>
-        <a href="/login">登入</a>
-      </li>
+
+      <!--  TODO 排版 -->
+      <div v-else>
+        <li>
+          <!-- TODO 點下去 傳入狀態 切換顯示 -->
+          <a href="/login">註冊</a>
+        </li>
+        <li>
+          <a href="/login">登入</a>
+        </li>
+      </div>
     </ul>
   </nav>
 </template>

@@ -30,17 +30,23 @@ const actions = {
     console.log('註冊')
     commit('SET_LOGIN_STATUS', true);
     commit('SET_USER', userData.username);
-    dispatch('setUserDataToLocalStorage', userData);
+    dispatch('setUserNameToLocalStorage', userData.username);
   },
   setUserNameToLocalStorage({ dispatch }, username) {
-    const payload = { name: 'username', data: JSON.stringify({ name: username }) };
+    const payload = { name: 'username', data: JSON.stringify(username) };
     console.log(username);
     dispatch('setToLocalStorage', payload, { root: true });
   },
   getUserDataToLocalStorage({ commit, dispatch }) {
     dispatch('getLocalStorage', { name: 'username' }, { root: true }).then(data => {
-      commit('SET_LOGIN_STATUS', true);
-      commit('SET_USER', data);
+      if (data.length > 0) {
+        commit('SET_LOGIN_STATUS', true);
+        commit('SET_USER', data);
+      } else {
+        commit('SET_LOGIN_STATUS', false);
+      }
+    }).catch(error => {
+      console.error(error);
     });
   },
 }
