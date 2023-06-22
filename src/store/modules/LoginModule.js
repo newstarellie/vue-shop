@@ -16,13 +16,11 @@ const actions = {
     commit('SET_REGISTER_PAGE_STATUS', status);
     router.push('/login');
   },
-  login({ commit }, user) {
-    console.log(user)
-    // 登入邏輯
-    // 在這裡執行後端驗證等相關操作
-    // 登入成功後觸發 mutation
+  login({ commit, dispatch }, username) {
+    console.log(username)
     commit('SET_LOGIN_STATUS', true)
-    commit('SET_USER', user)
+    commit('SET_USER', username)
+    dispatch('setUserNameToLocalStorage', username);
   },
   logout({ commit }) {
     // 登出邏輯
