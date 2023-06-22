@@ -20,24 +20,24 @@ const actions = {
     console.log(username)
     commit('SET_LOGIN_STATUS', true)
     commit('SET_USER', username)
-    dispatch('setUserNameToLocalStorage', username);
+    dispatch('setUserNameToLocalStorage');
   },
-  logout({ commit }) {
+  logout({ commit, dispatch }) {
     // 登出邏輯
     // 在這裡執行相關操作，如清除使用者資訊等
     // 登出成功後觸發 mutation
     commit('SET_LOGIN_STATUS', false)
     commit('SET_USER', null)
+    dispatch('setUserNameToLocalStorage');
   },
   register({ commit, dispatch }, userData) {
     console.log('註冊')
     commit('SET_LOGIN_STATUS', true);
     commit('SET_USER', userData.username);
-    dispatch('setUserNameToLocalStorage', userData.username);
+    dispatch('setUserNameToLocalStorage');
   },
-  setUserNameToLocalStorage({ dispatch }, username) {
-    const payload = { name: 'username', data: JSON.stringify(username) };
-    console.log(username);
+  setUserNameToLocalStorage({ dispatch }) {
+    const payload = { name: 'username', data: JSON.stringify(state.user) };
     dispatch('setToLocalStorage', payload, { root: true });
   },
   getUserDataToLocalStorage({ commit, dispatch }) {

@@ -47,7 +47,9 @@ export default {
   methods: {
     toRegisterPage(status) {
       this.$store.dispatch('LoginModule/setRegisterStatus', { router: this.$router, status: status });
-
+    },
+    logout() {
+      this.$store.dispatch('LoginModule/logout');
     }
   },
 };
