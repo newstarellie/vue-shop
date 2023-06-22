@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container loginPage">
     <h2>{{ isRegister ? '註冊' : '登入' }}</h2>
     <form @submit.prevent="handleSubmit">
       <div>
@@ -75,3 +75,37 @@ export default {
   }
 }
 </script>
+<style lang="scss" scope>
+.loginPage {
+  flex-direction: column;
+  // align-items: center;
+  // justify-content: center;
+
+  // TODO 變成常用元件
+  form {
+    flex-direction: column;
+    width: 50%;
+    margin: 10px auto;
+
+    label {
+      text-align: left;
+      display: block;
+      margin: $margin-sm 0;
+    }
+
+    input,
+    select {
+      text-align: start;
+
+    }
+
+    button {
+      margin-top: 20px;
+    }
+  }
+
+  button {
+    margin: $margin-sm 0;
+  }
+}
+</style>
