@@ -26,7 +26,8 @@
       </div>
     </form>
     <div>
-      <button @click="toggleForm">{{ isRegister ? '已有帳號？登入' : '還沒有帳號？註冊' }}</button>
+      <button @click="toggleForm
+      ">{{ isRegister ? '已有帳號？登入' : '還沒有帳號？註冊' }}</button>
     </div>
   </div>
 </template>
@@ -36,9 +37,13 @@ export default {
   name: 'LoginPage',
   data() {
     return {
-      isRegister: true, // 控制是註冊還是登入頁面
       username: '',
       password: ''
+    }
+  },
+  computed: {
+    isRegister() {
+      return this.$store.state.LoginModule.registerPageStatus;
     }
   },
   methods: {
@@ -65,7 +70,7 @@ export default {
       this.$store.dispatch('LoginModule/register', userData);
     },
     toggleForm() {
-      this.isRegister = !this.isRegister; // 切換註冊和登入頁面
+      this.$store.dispatch('LoginModule/setRegisterStatus', { router: this.$router, status: !this.isRegister });
     }
   }
 }

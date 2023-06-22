@@ -2,7 +2,8 @@
 
 const state = {
   isLoggedIn: false, // 登入狀態
-  user: null // 登入的使用者資訊
+  user: null, // 登入的使用者資訊
+  registerPageStatus: false,
 }
 
 const getters = {
@@ -11,6 +12,10 @@ const getters = {
 }
 
 const actions = {
+  setRegisterStatus({ commit }, { router, status }) {
+    commit('SET_REGISTER_PAGE_STATUS', status);
+    router.push('/login');
+  },
   login({ commit }, user) {
     console.log(user)
     // 登入邏輯
@@ -56,7 +61,10 @@ const mutations = {
   },
   SET_USER(state, user) {
     state.user = user
-  }
+  },
+  SET_REGISTER_PAGE_STATUS(state, status) {
+    state.registerPageStatus = status;
+  },
 }
 
 export default {

@@ -16,14 +16,12 @@
         <a @click="logout">登出</a>
       </li>
 
-      <!--  TODO 排版 -->
       <div v-else>
         <li>
-          <!-- TODO 點下去 傳入狀態 切換顯示 -->
-          <a href="/login">註冊</a>
+          <a @click="toRegisterPage(true)">註冊</a>
         </li>
         <li>
-          <a href="/login">登入</a>
+          <a @click="toRegisterPage(false)">登入</a>
         </li>
       </div>
     </ul>
@@ -44,7 +42,13 @@ export default {
     username() {
       return this.$store.state.LoginModule.user;
     }
-  }
+  },
+  methods: {
+    toRegisterPage(status) {
+      this.$store.dispatch('LoginModule/setRegisterStatus', { router: this.$router, status: status });
+
+    }
+  },
 };
 </script>
 <style scoped>
