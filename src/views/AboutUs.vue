@@ -8,7 +8,8 @@
       <slide v-for="slide in bannerList"
         :key="slide">
         <div class="slide-content">
-          <img :src="slide.path"
+          <img :data-src="slide.path"
+            class="lazyload"
             alt="slide-picture">
         </div>
       </slide>
@@ -23,11 +24,12 @@
   <div class="brief-content">
     <div class="container">
       <div class="img-box">
-        <img alt="brief-content-img"
-          src="../assets/home/brief-content-2.jpg">
-        <img class="top"
+        <img class="lazyload"
           alt="brief-content-img"
-          src="../assets/home/brief-content-1.jpg">
+          :data-src="require('@/assets/home/brief-content-2.jpg')">
+        <img class="top lazyload"
+          alt="brief-content-img"
+          :data-src="require('@/assets/home/brief-content-1.jpg')">
       </div>
       <div class="text">
         <p>

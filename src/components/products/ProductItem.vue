@@ -1,6 +1,7 @@
 <template>
   <li class="product-item">
-    <img :src="ProductItemInform.productImage"
+    <img :data-src="ProductItemInform.productImage"
+      class="lazyload"
       :alt="ProductItemInform.productName" />
     <div class="product-item-inform">
       <p>{{ ProductItemInform.productName }}</p>
