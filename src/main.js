@@ -3,14 +3,15 @@ import App from './App.vue';
 import store from './store/index';
 import router from './router/index.js';
 
+// https://github.com/aFarkas/lazysizes
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
+
+
 // vue-toastification 設定
 // https://www.npmjs.com/package/@brackets/vue-toastification
 import Toast, { POSITION, useToast } from "vue-toastification";
 import "vue-toastification/dist/index.css";
-
-
-
-
 
 
 
@@ -25,6 +26,7 @@ app.use(Toast, {
   position: POSITION.TOP_CENTER
 });
 app.config.globalProperties.$toast = useToast();
+app.config.globalProperties.$lazySizes = window.lazySizes;
 
 
 app.mount('#app')
