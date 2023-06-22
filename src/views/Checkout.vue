@@ -76,7 +76,7 @@ export default {
   },
   methods: {
     submitOrder() {
-      this.$router.push('/lazy-loading');
+      this.$router.push('/loadingSpinner');
       const payload = {
         orderNumber: this.orderNumber,
         createdTime: this.createdTime,
