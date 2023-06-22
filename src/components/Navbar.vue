@@ -16,7 +16,8 @@
         <a @click="logout">登出</a>
       </li>
 
-      <div v-else>
+      <div class="row"
+        v-else>
         <li>
           <a @click="toRegisterPage(true)">註冊</a>
         </li>
