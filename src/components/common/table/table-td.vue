@@ -18,8 +18,10 @@
   </td>
 
   <td v-else-if="dataForm == 'img'">
-    <img :src="data"
-      alt="data">
+    <img :data-src="data"
+      class="lazyload"
+      :alt="data" />
+
   </td>
 </template>
 
