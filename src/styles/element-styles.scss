@@ -1,7 +1,21 @@
 // 全局樣式
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+html,
 body {
   font-family: $font-family;
-  color: $secondary-color;
+  color: $text-color;
+  text-align: center;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  -webkit-user-select: none;
+  user-select: none;
+  background-color: $primary-color;
 }
 
 h1,
@@ -10,15 +24,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: $primary-color;
-}
-
-/* 全域CSS設定 */
-body {
-  font-family: Arial, sans-serif;
-  background-color: $bg-color;
-  margin: 0;
-  padding: 0;
+  color: $text-color;
 }
 
 /* 標題樣式 */
@@ -26,28 +32,36 @@ h1 {
   font-size: 2em;
   text-align: center;
   margin-top: 0.5em;
-  color: $main-color;
+  color: $text-color;
 }
 
 /* 表單樣式 */
 form {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 2em auto;
-  max-width: 300px;
-  background-color: #fff;
   padding: 1em;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+header {
+  background-color: $background-secondary-color;
+  padding: $padding-md;
+}
+
+footer {
+  background-color: #f0f0f0;
+  padding: $padding-md;
+}
+
+table {
+  margin: 0 auto;
 }
 
 /* 標籤樣式 */
 label {
   font-size: 1.2em;
   margin-bottom: 0.5em;
-  color: $main-color;
+  color: $text-color;
 }
 
 /* 輸入欄位樣式 */
@@ -56,20 +70,86 @@ input {
   padding: 0.5em;
   border-radius: 5px;
   border: none;
-  background-color: $bg-color;
-  margin-bottom: 1em;
+  background-color: $tertiary-color;
+  color: $text-color;
+  text-align: center;
+}
+
+select {
+  font-size: 1.2em;
+  padding: 0.5em;
+  border-radius: 5px;
+  border: none;
+  background-color: $tertiary-color;
   color: $text-color;
   text-align: center;
 }
 
 /* 按鈕樣式 */
 button {
-  background-color: $main-color;
+  background-color: $secondary-color;
   color: #fff;
   padding: 0.5em 1em;
   border: none;
   border-radius: 5px;
   font-size: 1.2em;
   cursor: pointer;
-  margin-top: 1em;
+
+  &:hover {
+    background-color: $primary-color;
+  }
+}
+
+p {
+  margin: 0;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+
+  li {
+    margin: 0 10px;
+  }
+}
+
+i {
+  font-size: $font-size-base;
+
+}
+
+a {
+  text-decoration: none;
+  color: $text-color;
+
+  &:hover {
+    color: $text-color-hover;
+  }
+}
+
+li {
+  list-style-type: none;
+}
+
+dl {
+  display: block;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  text-align: left;
+  cursor: pointer;
+
+  dt {
+    &::before {
+      margin-right: 5px;
+    }
+  }
+
+  dd:hover {
+    color: $text-color-hover;
+  }
+
+
 }

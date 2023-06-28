@@ -1,37 +1,55 @@
 <template>
-  {{ tryValue }}
-  <img alt="Vue logo" src="./assets/logo.png">
-  <router-link to="/home">Home</router-link>
-  <router-view></router-view>
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div id="app">
+    <Navbar class="navbar"></Navbar>
+    <Header></Header>
+    <ContentNavbar></ContentNavbar>
+
+    <main>
+      <router-view></router-view>
+    </main>
+
+    <footer>
+      <p>&copy; 2023 My E-commerce Website. All rights reserved.</p>
+    </footer>
+
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import { mapState } from 'vuex';
-
+import Navbar from './components/Navbar.vue';
+import ContentNavbar from './components/Content-Navbar.vue';
+import Header from './components/Header.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Navbar,
+    Header,
+    ContentNavbar
   },
   computed: {
-    ...mapState(['tryValue']),
   },
+  methods: {
 
+  },
 }
 </script>
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
   background-color: $primary-color;
+  display: flex;
+  min-height: 100%;
+  height: 100%;
+  flex-direction: column;
+}
 
+
+main {
+  flex: 1;
+}
+
+footer {
+  flex-shrink: 0;
 }
 </style>
