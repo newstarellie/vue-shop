@@ -1,41 +1,49 @@
 <template>
   <header>
-    <h1 class="mallLogo">
-      <a href="#"
-        @mouseover="handleMouseOver"
-        @mouseout="handleMouseOut"
-        title="買買買商城">
-        <img :src="logoIsHovered ? hoverImageUrl : defaultImageUrl"
-          alt="買買買商城logo" />
-        <span>買買買商城</span>
+    <Navbar class="navbar"></Navbar>
 
-      </a>
-    </h1>
+    <div>
+      <h1 class="mallLogo">
+        <a href="#"
+          @mouseover="handleMouseOver"
+          @mouseout="handleMouseOut"
+          title="買買買商城">
+          <img :src="logoIsHovered ? hoverImageUrl : defaultImageUrl"
+            alt="買買買商城logo" />
+          <span>買買買商城</span>
+        </a>
+      </h1>
+      <div class="mallSearch">
+        <form action=""
+          novalidate>
+          <input type="text"
+            name="title"
+            required
+            autocomplete="off"
+            placeholder="请输入需要的商品">
 
-    <div class="mallSearch">
-      <form action=""
-        novalidate>
-        <input type="text"
-          name="title"
-          required
-          autocomplete="off"
-          placeholder="请输入需要的商品">
+          <button type="submit">
+            <span class="sr-only">搜尋</span>
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
 
-        <button type="submit">
-          <span class="sr-only">搜尋</span>
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
-
-      </form>
+        </form>
+      </div>
     </div>
+
+
   </header>
 </template>
 
 <script>
+import Navbar from '@/components/Navbar.vue';
 
 
 export default {
   name: 'HeaderComponent',
+  components: {
+    Navbar
+  },
   data() {
     return {
       logoIsHovered: false,
@@ -58,6 +66,7 @@ export default {
 <style lang="scss" scoped>
 header {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
