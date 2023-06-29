@@ -1,30 +1,32 @@
 <template>
-  <nav>
-    <ul class="nav-list">
-      <li>
-        <router-link to="/">
-          首頁
-        </router-link>
+  <nav class="w-100">
+    <ul class="d-flex w-100">
+      <li class="mr-auto">
+        <router-link class="nav-link"
+          to="/">首頁</router-link>
       </li>
-      <div class="right-align"></div>
       <li>
-        <router-link to="/cart">購物車</router-link>
+        <router-link class="nav-link"
+          to="/cart">購物車</router-link>
       </li>
       <!-- 顯示登入狀態的區域 -->
-      <li v-if="isLogged">
-        歡迎{{ username }}
-        <a @click="logout">登出</a>
-      </li>
-
-      <div class="row"
-        v-else>
+      <template v-if="isLogged">
         <li>
-          <a @click="toRegisterPage(true)">註冊</a>
+          歡迎{{ username }}
+          <a class="nav-link"
+            @click="logout">登出</a>
+        </li>
+      </template>
+      <template v-else>
+        <li>
+          <a class="nav-link"
+            @click="toRegisterPage(true)">註冊</a>
         </li>
         <li>
-          <a @click="toRegisterPage(false)">登入</a>
+          <a class="nav-link"
+            @click="toRegisterPage(false)">登入</a>
         </li>
-      </div>
+      </template>
     </ul>
   </nav>
 </template>
@@ -54,9 +56,9 @@ export default {
   },
 };
 </script>
-<style scoped>
-.nav-list {
-  display: flex;
-  justify-content: flex-end;
+<style scoped lang="scss">
+ul a:hover {
+  color: $text-color-hover;
 }
 </style>
+

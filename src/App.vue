@@ -1,10 +1,9 @@
 <template>
   <div id="app">
-    <Navbar class="navbar"></Navbar>
-    <Header></Header>
-    <ContentNavbar></ContentNavbar>
+    <Header> </Header>
 
     <main>
+      <ContentNavbar></ContentNavbar>
       <router-view></router-view>
     </main>
 
@@ -16,14 +15,12 @@
 </template>
 
 <script>
-import Navbar from './components/Navbar.vue';
 import ContentNavbar from './components/Content-Navbar.vue';
 import Header from './components/Header.vue';
 
 export default {
   name: 'App',
   components: {
-    Navbar,
     Header,
     ContentNavbar
   },
