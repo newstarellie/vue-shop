@@ -1,24 +1,22 @@
 <template>
-  <nav>
-    <ul>
-      <li>
+  <nav class="w-100">
+    <ul class="d-flex w-100">
+      <li class="mr-auto">
         <router-link class="nav-link"
-          to="
-          /">
-          首頁
-        </router-link>
+          to="/">首頁</router-link>
       </li>
       <li>
         <router-link class="nav-link"
           to="/cart">購物車</router-link>
       </li>
       <!-- 顯示登入狀態的區域 -->
-      <li v-if="isLogged">
-        歡迎{{ username }}
-        <a class="nav-link"
-          @click="logout">登出</a>
-      </li>
-
+      <template v-if="isLogged">
+        <li>
+          歡迎{{ username }}
+          <a class="nav-link"
+            @click="logout">登出</a>
+        </li>
+      </template>
       <template v-else>
         <li>
           <a class="nav-link"
