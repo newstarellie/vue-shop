@@ -1,6 +1,7 @@
 <template>
-  <div v-if="searchResults.length > 0">
-    <h3>搜索結果：</h3>
+  <div class="SearchingResultPage"
+    v-if="searchResults.length > 0">
+    <h3>搜索結果</h3>
     <ul class="ProductList">
       <li class="product-item"
         v-for="result in searchResults"
@@ -48,4 +49,10 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" scope>
+.SearchingResultPage {
+  .ProductList {
+    justify-content: center;
+  }
+}
+</style>
