@@ -32,6 +32,7 @@ const state = {
       productImage: product3
     },
   ],
+  searchResults: [],
 };
 
 // 定义 getters 对象
@@ -40,11 +41,27 @@ const getters = {
 
 // 定义 actions 对象
 const actions = {
-
+  searchItems({ commit, state }, searchQuery) {
+    // 执行搜索逻辑
+    console.log(searchQuery)
+    const query = searchQuery.trim().toLowerCase();
+    if (query === '') {
+      commit('SET_SEARCH_RESULTS', []); // 清空搜索结果
+    } else {
+      const results = state.productsList.filter(product =>
+        product.productName.toLowerCase().includes(query)
+      );
+      commit('SET_SEARCH_RESULTS', results);
+    }
+  }
 };
 
 // 定义 mutations 对象
 const mutations = {
+  SET_SEARCH_RESULTS(state, results) {
+    state.searchResults = results;
+    console.log(results)
+  }
 };
 
 export default {

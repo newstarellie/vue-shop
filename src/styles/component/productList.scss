@@ -1,0 +1,19 @@
+.ProductList {
+  .product-item {
+    margin: 10px;
+
+    button {
+      width: 100%;
+    }
+  }
+
+  .product-item-inform {
+    display: flex;
+    justify-content: space-between;
+
+    p {
+      margin: auto 5px;
+
+    }
+  }
+}

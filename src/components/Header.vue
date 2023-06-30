@@ -13,10 +13,11 @@
     </h1>
 
     <div class="mallSearch">
-      <form action=""
+      <form @submit.prevent="searchItems"
         novalidate>
         <input type="text"
           name="title"
+          v-model="searchQuery"
           required
           autocomplete="off"
           placeholder="请输入需要的商品">
@@ -41,6 +42,7 @@ export default {
       logoIsHovered: false,
       defaultImageUrl: require('@/assets/mall-logo-default.svg'),
       hoverImageUrl: require('@/assets/mall-logo-hover.svg'),
+      searchQuery: '',
 
     };
   },
@@ -52,6 +54,18 @@ export default {
     handleMouseOut() {
       this.logoIsHovered = false;
     },
+    searchItems() {
+      this.$store.dispatch('searchItems', this.searchQuery)
+        .then(() => {
+          this.searchQuery = '';
+          this.$router.push('/searchingResult');
+        })
+        .catch(error => {
+          console.error('搜索出错:', error);
+        });
+
+      console.log('搜索关键字:', this.searchQuery);
+    }
   },
 };
 </script>
