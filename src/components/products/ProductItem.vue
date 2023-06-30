@@ -4,7 +4,7 @@
       class="lazyload"
       :alt="ProductItemInform.productName" />
     <div class="product-item-inform">
-      <p>{{ ProductItemInform.productName }}</p>
+      <h4>{{ ProductItemInform.productName }}</h4>
       <!-- <p>{{ ProductItemInform.productDescription }}</p> -->
       <p>{{ ProductItemInform.productPrice }} 元</p>
     </div>
