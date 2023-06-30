@@ -22,9 +22,11 @@
 </template>
 
 <script>
+import myMixin from '@/mixins/myMixin';
 
 export default {
   name: 'SearchingResultPage',
+  mixins: [myMixin],
   components: {
 
   },

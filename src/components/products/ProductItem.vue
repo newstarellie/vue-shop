@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import myMixin from '@/mixins/myMixin';
+
 export default {
   name: 'ProductItem',
   props: {
@@ -21,32 +23,13 @@ export default {
       required: true,
     },
   },
+  mixins: [myMixin],
   methods: {
-    addToCart(ProductItemInform) {
-      this.$toast.success("加入成功");
-      console.log(this.ProductItemInform)
-      return this.$store.dispatch('addToCart', ProductItemInform);
-    },
+
   },
   created() {
     this.$store.dispatch('getCartItemFromLocalStorage');
   }
 };
 </script>
-<style scope lang="scss" >
-.product-item {
-  button {
-    width: 100%;
-  }
-}
-
-.product-item-inform {
-  display: flex;
-  justify-content: space-between;
-
-  p {
-    margin: 5px;
-  }
-}
-</style>
 
