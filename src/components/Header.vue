@@ -55,11 +55,14 @@ export default {
       this.logoIsHovered = false;
     },
     searchItems() {
-      this.$store.dispatch('searchItems', this.searchQuery);
-      this.searchQuery = '';
-
-      // TODO 要做異部操作? 
-      this.$router.push('/searchingResult');
+      this.$store.dispatch('searchItems', this.searchQuery)
+        .then(() => {
+          this.searchQuery = '';
+          this.$router.push('/searchingResult');
+        })
+        .catch(error => {
+          console.error('搜索出错:', error);
+        });
 
       console.log('搜索关键字:', this.searchQuery);
     }
