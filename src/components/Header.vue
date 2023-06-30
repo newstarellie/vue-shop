@@ -58,6 +58,9 @@ export default {
       this.$store.dispatch('searchItems', this.searchQuery);
       this.searchQuery = '';
 
+      // TODO 要做異部操作? 
+      this.$router.push('/searchingResult');
+
       console.log('搜索关键字:', this.searchQuery);
     }
   },

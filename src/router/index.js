@@ -5,6 +5,7 @@ import Contact from '../views/Contact.vue'
 import Checkout from '../views/Checkout.vue'
 import aboutUs from '../views/AboutUs.vue'
 import LoadingSpinner from '../views/LoadingSpinnerPage.vue'
+import SearchingResult from '../views/SearchingResult.vue'
 import Login from '../views/Login.vue'
 
 
@@ -44,6 +45,11 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login,
+  },
+  {
+    path: '/searchingResult',
+    name: 'SearchingResult',
+    component: SearchingResult,
   }
 ];
 
