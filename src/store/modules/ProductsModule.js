@@ -32,6 +32,7 @@ const state = {
       productImage: product3
     },
   ],
+  searchResults: [],
 };
 
 // 定义 getters 对象
