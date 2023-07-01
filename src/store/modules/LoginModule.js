@@ -1,6 +1,6 @@
 // loginModule.js
 import { auth } from '@/firebase';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 
 
 const state = {
@@ -36,7 +36,7 @@ const actions = {
       console.error(error);
     });
   },
-  registerUser({ commit }, payload) {
+  registerUser({ commit, dispatch }, payload) {
     console.log(commit)
     console.log(payload)
     console.log(payload.userEmail)
@@ -45,12 +45,47 @@ const actions = {
         // 註冊成功
         const user = userCredential.user;
         console.log('使用者註冊成功:', user);
+        commit('SET_LOGIN_STATUS', true)
+        commit('SET_USER', payload.userEmail)
+        dispatch('setUserNameToLocalStorage');
       })
       .catch((error) => {
         // 註冊失敗
         console.log(payload.userEmail)
 
         console.log('使用者註冊失敗:', error);
+      });
+  },
+  logoutUser({ commit, dispatch }) {
+    signOut(auth)
+      .then(() => {
+        // 登出成功
+        console.log('使用者已登出');
+        commit('SET_LOGIN_STATUS', false)
+        commit('SET_USER', null)
+        dispatch('setUserNameToLocalStorage');
+      })
+      .catch((error) => {
+        // 登出失敗
+        console.log('使用者登出失敗:', error);
+      });
+  },
+  loginUserWithEmailAndPassword({ commit, dispatch }, payload) {
+    console.log(payload)
+    console.log(payload.userEmail)
+    return signInWithEmailAndPassword(auth, payload.userEmail, payload.password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log('使用者登入成功:', user);
+        commit('SET_LOGIN_STATUS', true)
+        commit('SET_USER', payload.userEmail)
+        dispatch('setUserNameToLocalStorage');
+        return user;
+      })
+      .catch((error) => {
+        // 登入失敗
+        console.log('使用者登入失敗:', error);
+        throw error;
       });
   }
 }

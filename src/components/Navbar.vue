@@ -49,7 +49,7 @@ export default {
       this.$store.dispatch('LoginModule/setRegisterStatus', { router: this.$router, status: status });
     },
     logout() {
-      this.$store.dispatch('LoginModule/logout');
+      this.$store.dispatch('LoginModule/logoutUser');
     }
   },
 };

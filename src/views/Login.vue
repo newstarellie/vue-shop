@@ -56,7 +56,11 @@ export default {
     },
     login() {
       console.log('登入')
-      this.$store.dispatch('LoginModule/login', this.userEmail);
+      const payload = {
+        userEmail: this.userEmail,
+        password: this.password,
+      }
+      this.$store.dispatch('LoginModule/loginUserWithEmailAndPassword', payload);
       this.$router.push('/');
     },
     register() {
