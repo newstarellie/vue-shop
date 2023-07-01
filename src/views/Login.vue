@@ -69,7 +69,7 @@ export default {
         password: this.password,
       }
       console.log(payload)
-      this.$store.dispatch('registerUser', payload);
+      this.$store.dispatch('LoginModule/registerUser', payload);
     },
   },
   toggleForm() {

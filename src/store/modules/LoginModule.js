@@ -1,4 +1,7 @@
 // loginModule.js
+import { auth } from '@/firebase';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+
 
 const state = {
   isLoggedIn: false, // 登入狀態
@@ -52,6 +55,23 @@ const actions = {
       console.error(error);
     });
   },
+  registerUser({ commit }, payload) {
+    console.log(commit)
+    console.log(payload)
+    console.log(payload.userEmail)
+    return createUserWithEmailAndPassword(auth, payload.userEmail, payload.password)
+      .then((userCredential) => {
+        // 註冊成功
+        const user = userCredential.user;
+        console.log('使用者註冊成功:', user);
+      })
+      .catch((error) => {
+        // 註冊失敗
+        console.log(payload.userEmail)
+
+        console.log('使用者註冊失敗:', error);
+      });
+  }
 }
 const mutations = {
   SET_LOGIN_STATUS(state, status) {
