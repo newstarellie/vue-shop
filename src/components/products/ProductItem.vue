@@ -4,7 +4,7 @@
       class="lazyload"
       :alt="ProductItemInform.productName" />
     <div class="product-item-inform">
-      <h4>{{ ProductItemInform.productName }}</h4>
+      <p>{{ ProductItemInform.productName }}</p>
       <!-- <p>{{ ProductItemInform.productDescription }}</p> -->
       <p>{{ ProductItemInform.productPrice }} 元</p>
     </div>
@@ -13,8 +13,6 @@
 </template>
 
 <script>
-import myMixin from '@/mixins/myMixin';
-
 export default {
   name: 'ProductItem',
   props: {
@@ -23,13 +21,32 @@ export default {
       required: true,
     },
   },
-  mixins: [myMixin],
   methods: {
-
+    addToCart(ProductItemInform) {
+      this.$toast.success("加入成功");
+      console.log(this.ProductItemInform)
+      return this.$store.dispatch('addToCart', ProductItemInform);
+    },
   },
   created() {
     this.$store.dispatch('getCartItemFromLocalStorage');
   }
 };
 </script>
+<style scope lang="scss" >
+.product-item {
+  button {
+    width: 100%;
+  }
+}
+
+.product-item-inform {
+  display: flex;
+  justify-content: space-between;
+
+  p {
+    margin: 5px;
+  }
+}
+</style>
 
