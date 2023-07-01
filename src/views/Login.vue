@@ -5,10 +5,10 @@
       <div>
         <!-- 註冊頁面的表單元素 -->
         <div>
-          <label for="username">使用者名稱：</label>
+          <label for="userEmail">使用者Email：</label>
           <input type="text"
-            id="username"
-            v-model="username"
+            id="userEmail"
+            v-model="userEmail"
             autocomplete="on"
             required>
         </div>
@@ -37,7 +37,7 @@ export default {
   name: 'LoginPage',
   data() {
     return {
-      username: '',
+      userEmail: '',
       password: ''
     }
   },
@@ -55,24 +55,27 @@ export default {
       }
     },
     login() {
-      // 在這裡處理登入邏輯
-      // 您可以在這裡使用 this.username 和 this.password 來獲取用戶輸入的資訊
-      // 可以向後端發送 API 請求進行驗證
       console.log('登入')
-      this.$store.dispatch('LoginModule/login', this.username);
+      this.$store.dispatch('LoginModule/login', this.userEmail);
       this.$router.push('/');
     },
     register() {
       // 註冊邏輯
       console.log('註冊');
       this.$router.push('/');
-      const userData = { username: this.username, password: this.password };
-      this.$store.dispatch('LoginModule/register', userData);
+
+      const payload = {
+        userEmail: this.userEmail,
+        password: this.password,
+      }
+      console.log(payload)
+      this.$store.dispatch('registerUser', payload);
     },
-    toggleForm() {
-      this.$store.dispatch('LoginModule/setRegisterStatus', { router: this.$router, status: !this.isRegister });
-    }
-  }
+  },
+  toggleForm() {
+    this.$store.dispatch('LoginModule/setRegisterStatus', { router: this.$router, status: !this.isRegister });
+  },
+
 }
 </script>
 <style lang="scss" scope>
