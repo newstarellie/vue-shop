@@ -26,8 +26,7 @@
       </div>
     </form>
     <div>
-      <button @click="toggleForm
-      ">{{ isRegister ? '已有帳號？登入' : '還沒有帳號？註冊' }}</button>
+      <button @click="toggleForm">{{ isRegister ? '已有帳號？登入' : '還沒有帳號？註冊' }}</button>
     </div>
   </div>
 </template>
@@ -71,9 +70,10 @@ export default {
       }
       this.$store.dispatch('LoginModule/registerUser', payload);
     },
-  },
-  toggleForm() {
-    this.$store.dispatch('LoginModule/setRegisterStatus', { router: this.$router, status: !this.isRegister });
+    toggleForm() {
+      console.log('jkio');
+      this.$store.dispatch('LoginModule/setRegisterStatus', { router: this.$router, status: !this.isRegister });
+    },
   },
 
 }
