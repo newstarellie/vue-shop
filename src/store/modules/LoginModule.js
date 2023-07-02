@@ -1,6 +1,9 @@
 // loginModule.js
 import { auth } from '@/firebase';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import router from '@/router';
+import { useToast } from 'vue-toastification'
+const toast = useToast()
 
 
 const state = {
@@ -39,17 +42,19 @@ const actions = {
     return createUserWithEmailAndPassword(auth, payload.userEmail, payload.password)
       .then((userCredential) => {
         // 註冊成功
+        router.push('/');
+        toast.success("註冊成功!")
         const user = userCredential.user;
         console.log('使用者註冊成功:', user);
         commit('SET_LOGIN_STATUS', true)
         commit('SET_USER', payload.userEmail)
         dispatch('setUserNameToLocalStorage');
+
       })
       .catch((error) => {
         // 註冊失敗
-        console.log(payload.userEmail)
-
         console.log('使用者註冊失敗:', error);
+        toast.error("註冊失敗");
       });
   },
   logoutUser({ commit, dispatch }) {

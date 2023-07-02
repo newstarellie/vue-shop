@@ -65,14 +65,10 @@ export default {
     },
     register() {
       // 註冊邏輯
-      console.log('註冊');
-      this.$router.push('/');
-
       const payload = {
         userEmail: this.userEmail,
         password: this.password,
       }
-      console.log(payload)
       this.$store.dispatch('LoginModule/registerUser', payload);
     },
   },
