@@ -65,10 +65,13 @@ const actions = {
         commit('SET_LOGIN_STATUS', false)
         commit('SET_USER', null)
         dispatch('setUserNameToLocalStorage');
+        router.push('/');
+        toast.success("登出成功!")
       })
       .catch((error) => {
         // 登出失敗
         console.log('使用者登出失敗:', error);
+        toast.error("登出失敗 請重新操作")
       });
   },
   loginUserWithEmailAndPassword({ commit, dispatch }, payload) {
@@ -79,11 +82,14 @@ const actions = {
         commit('SET_LOGIN_STATUS', true)
         commit('SET_USER', payload.userEmail)
         dispatch('setUserNameToLocalStorage');
-        return user;
+        router.push('/');
+        toast.success("登入成功!")
+
       })
       .catch((error) => {
         // 登入失敗
         console.log('使用者登入失敗:', error);
+        toast.error("登入失敗");
       });
   }
 }
