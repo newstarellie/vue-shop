@@ -45,7 +45,6 @@ const actions = {
       })
       .catch((error) => {
         console.error("儲存資料時發生錯誤：", error);
-        throw error; // 將錯誤向上傳遞，以便在需要時處理
       });
   },
 };

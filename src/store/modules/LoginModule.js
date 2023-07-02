@@ -19,7 +19,6 @@ const actions = {
     commit('SET_REGISTER_PAGE_STATUS', status);
     router.push('/login');
   },
-
   setUserNameToLocalStorage({ dispatch }) {
     const payload = { name: 'username', data: JSON.stringify(state.user) };
     dispatch('setToLocalStorage', payload, { root: true });
@@ -37,9 +36,6 @@ const actions = {
     });
   },
   registerUser({ commit, dispatch }, payload) {
-    console.log(commit)
-    console.log(payload)
-    console.log(payload.userEmail)
     return createUserWithEmailAndPassword(auth, payload.userEmail, payload.password)
       .then((userCredential) => {
         // 註冊成功
@@ -71,8 +67,6 @@ const actions = {
       });
   },
   loginUserWithEmailAndPassword({ commit, dispatch }, payload) {
-    console.log(payload)
-    console.log(payload.userEmail)
     return signInWithEmailAndPassword(auth, payload.userEmail, payload.password)
       .then((userCredential) => {
         const user = userCredential.user;
@@ -85,7 +79,6 @@ const actions = {
       .catch((error) => {
         // 登入失敗
         console.log('使用者登入失敗:', error);
-        throw error;
       });
   }
 }
