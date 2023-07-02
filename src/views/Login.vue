@@ -4,21 +4,26 @@
     <form @submit.prevent="handleSubmit">
       <div>
         <!-- 註冊頁面的表單元素 -->
+        <!-- 註冊頁面的表單元素 -->
         <div>
           <label for="userEmail">使用者Email：</label>
-          <input type="text"
+          <input type="email"
             id="userEmail"
             v-model="userEmail"
-            autocomplete="on"
-            required>
+            required
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            title="請輸入有效的Email地址"
+            autocomplete="on">
         </div>
         <div>
           <label for="password">密碼：</label>
           <input type="password"
             id="password"
             v-model="password"
-            autocomplete="on"
-            required>
+            required
+            minlength="8"
+            title="密碼至少需要8個字符"
+            autocomplete="on">
         </div>
       </div>
       <div>
