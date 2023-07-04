@@ -26,6 +26,20 @@ const actions = {
     let localStorageData = JSON.parse(localStorage.getItem(payload.name)) || [];
     return localStorageData;
   },
+  extractTextFromAuthString({ commit }, inputString) {
+    console.log(commit);
+    const regexPattern = /\(auth\/(.*?)\)/;
+    const matches = inputString.match(regexPattern);
+
+    if (matches) {
+      let extractedText = matches[1];
+      extractedText = extractedText.split("/").pop(); // 保留最後一部分
+      console.log(extractedText)
+      return extractedText;
+    }
+
+    return null;
+  }
 };
 
 // 定义 mutations 对象

@@ -85,13 +85,13 @@ const actions = {
         dispatch('setUserNameToLocalStorage');
         router.push('/');
         toast.success("登入成功!")
-
       })
-      .catch((error) => {
+      .catch(async (error) => {
         // 登入失敗
         console.log('使用者登入失敗:', error);
-        toast.error(`登入失敗 ${error}`);
-
+        let string = error.toString();
+        const result = await dispatch('extractTextFromAuthString', string, { root: true });
+        toast.error(`登入失敗 ${result}`);
       });
   }
 }
