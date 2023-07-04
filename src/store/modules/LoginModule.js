@@ -54,7 +54,7 @@ const actions = {
       .catch((error) => {
         // 註冊失敗
         console.log('使用者註冊失敗:', error);
-        toast.error("註冊失敗");
+        toast.error(`註冊失敗 ${error}`);
       });
   },
   logoutUser({ commit, dispatch }) {
@@ -71,7 +71,8 @@ const actions = {
       .catch((error) => {
         // 登出失敗
         console.log('使用者登出失敗:', error);
-        toast.error("登出失敗 請重新操作")
+        toast.error(`登出失敗 ${error}`);
+
       });
   },
   loginUserWithEmailAndPassword({ commit, dispatch }, payload) {
@@ -89,7 +90,8 @@ const actions = {
       .catch((error) => {
         // 登入失敗
         console.log('使用者登入失敗:', error);
-        toast.error("登入失敗");
+        toast.error(`登入失敗 ${error}`);
+
       });
   }
 }
