@@ -2,7 +2,7 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import store from './store/index';
 import router from './router/index.js';
-import i18n from '@/locales/i18n';
+import i18n from '@/i18n/i18n';
 
 
 // https://github.com/aFarkas/lazysizes

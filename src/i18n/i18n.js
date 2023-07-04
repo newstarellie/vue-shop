@@ -1,6 +1,6 @@
 import { createI18n } from 'vue-i18n';
-import en from './en';
-import zh from './zh';
+import en from './locales/en';
+import zh from './locales/zh';
 
 
 const messages = {
