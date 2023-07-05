@@ -44,7 +44,7 @@ const actions = {
     const convertedString = dynamicPath.replace(/-/g, "_");
     console.log(convertedString);
 
-    return i18n.global.t(`message.${convertedString}`);
+    return i18n.global.t(`AuthMessage.${convertedString}`);
   }
 };
 
