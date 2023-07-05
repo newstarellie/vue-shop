@@ -4,7 +4,7 @@ import ProductsModule from './modules/ProductsModule';
 import CartModule from './modules/CartModule';
 import CheckoutModule from './modules/CheckoutModule';
 import LoginModule from './modules/LoginModule';
-
+import i18n from "@/i18n/i18n";
 
 // 定义状态对象
 const state = {
@@ -26,19 +26,25 @@ const actions = {
     let localStorageData = JSON.parse(localStorage.getItem(payload.name)) || [];
     return localStorageData;
   },
-  extractTextFromAuthString({ commit }, inputString) {
+  async extractTextFromAuthString({ commit, dispatch }, inputString) {
     console.log(commit);
     const regexPattern = /\(auth\/(.*?)\)/;
     const matches = inputString.match(regexPattern);
 
     if (matches) {
-      let extractedText = matches[1];
-      extractedText = extractedText.split("/").pop(); // 保留最後一部分
-      console.log(extractedText)
-      return extractedText;
+      const extractedText = matches[1].split("/").pop(); // 保留最後一部分
+      return await dispatch('translateAndConvertAuthString', extractedText);
     }
 
     return null;
+  },
+  translateAndConvertAuthString({ commit }, dynamicPath) {
+    console.log(commit);
+    // todo 轉換 dynamicPath
+    const convertedString = dynamicPath.replace(/-/g, "_");
+    console.log(convertedString);
+
+    return i18n.global.t(`message.${convertedString}`);
   }
 };
 
